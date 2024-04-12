@@ -3,23 +3,23 @@
 namespace AgemoniaCombatHelperTests;
 public class HeroStaminaTests
 {
-    private readonly Hero _hero = new(5);
+    private readonly Hero _hero = new(HeroClass.Torrax, 1);
     [Fact]
     public void ShouldSpend()
     {
         bool success = _hero.SpendStamina(3);
 
         Assert.True(success);
-        Assert.Equal(2, _hero.Stamina);
+        Assert.Equal(7, _hero.Stamina);
         Assert.Equal(3, _hero.SpentStamina);
     }
     [Fact]
     public void ShouldFail()
     {
-        bool success = _hero.SpendStamina(6);
+        bool success = _hero.SpendStamina(11);
 
         Assert.False(success);
-        Assert.Equal(5, _hero.Stamina);
+        Assert.Equal(10, _hero.Stamina);
     }
     [Fact]
     public void ShouldRecover()
@@ -48,7 +48,7 @@ public class HeroStaminaTests
     {
         _hero.RecoverStamina(1);
 
-        Assert.Equal(5, _hero.Stamina);
+        Assert.Equal(10, _hero.Stamina);
         Assert.Equal(0, _hero.SpentStamina);
     }
 }

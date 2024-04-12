@@ -3,12 +3,12 @@ using AgemoniaCombatHelper.Models;
 namespace AgemoniaCombatHelperTests;
 public class HeroDamageTests
 {
-    private readonly Hero _hero = new(5);
+    private readonly Hero _hero = new(HeroClass.Torrax, 1);
     [Fact]
     public void AllUnspentStaminaDamage()
     {
         _hero.TakeDamage(3);
-        Assert.Equal(2, _hero.Stamina);
+        Assert.Equal(7, _hero.Stamina);
         Assert.Equal(3, _hero.Damage);
     }
     [Fact]
@@ -39,12 +39,12 @@ public class HeroDamageTests
     {
         _hero.Stamina = 0;
         _hero.SpentStamina = 0;
-        _hero.Damage = 5;
+        _hero.Damage = 10;
 
         _hero.TakeDamage(1);
 
         Assert.True(_hero.Wounded);
-        Assert.Equal(3, _hero.Stamina);
+        Assert.Equal(5, _hero.Stamina);
         Assert.Equal(0, _hero.SpentStamina);
         Assert.Equal(0, _hero.Damage);
     }
@@ -87,7 +87,7 @@ public class HeroDamageTests
     {
         _hero.HealDamage(1);
 
-        Assert.Equal(5, _hero.Stamina);
+        Assert.Equal(10, _hero.Stamina);
         Assert.Equal(0, _hero.Damage);
     }
 }

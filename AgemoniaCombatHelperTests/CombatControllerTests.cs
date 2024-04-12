@@ -5,9 +5,9 @@ public class CombatControllerTests
 {
     private readonly CombatController _controller = new();
 
-    private readonly Hero _redPlayer = new(5);
-    private readonly Hero _greenPlayer = new(5);
-    private readonly Hero _bluePlayer = new(5);
+    private readonly Hero _redPlayer = new(HeroClass.Torrax, 1);
+    private readonly Hero _greenPlayer = new(HeroClass.Torrax, 1);
+    private readonly Hero _bluePlayer = new(HeroClass.Torrax, 1);
 
     private readonly Enemy _redEnemy = new(5, 0);
     private readonly Enemy _greenEnemy = new(5, 0);

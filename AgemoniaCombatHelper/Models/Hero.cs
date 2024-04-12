@@ -1,13 +1,32 @@
 ﻿namespace AgemoniaCombatHelper.Models;
 
-public class Hero(int stamina) : Entity
+public class Hero : Entity
 {
-    public int Stamina { get; set; } = stamina;
-    private readonly int WoundedStamina = (int)Math.Ceiling((double)stamina / 2.0f);
+    public HeroClass HeroClass { get; set; }
+    public int Level { get; set; }
+    public int Stamina { get; set; }
+    private readonly int WoundedStamina;
     public int SpentStamina { get; set; } = 0;
     public int Damage { get; set; } = 0;
     public bool Wounded { get; set; } = false;
     public bool Exhausted { get; set; } = false;
+    public Hero(HeroClass heroClass, int level)
+    {
+        HeroClass = heroClass;
+        Level = level;
+        switch (heroClass)
+        {
+            case HeroClass.Torrax: Stamina = 10; break;
+            case HeroClass.Venia: Stamina = 7; break;
+            case HeroClass.Jonai: Stamina = 8; break;
+            case HeroClass.Lunara: Stamina = 9; break;
+            case HeroClass.Matajam: Stamina = 8; break;
+            case HeroClass.Drenosh: Stamina = 9; break;
+            case HeroClass.ZuvaSai: Stamina = 8; break;
+        }
+        Stamina += level - 1;
+        WoundedStamina = (int)Math.Ceiling((double)Stamina / 2.0f);
+    }
 
     public bool SpendStamina(int staminaToSpend)
     {
