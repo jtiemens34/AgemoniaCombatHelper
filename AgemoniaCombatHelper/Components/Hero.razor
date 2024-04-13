@@ -1,0 +1,28 @@
+﻿@if (hero is not null)
+{
+    <table>
+        <tr>
+            <td rowspan="2">
+                @hero.ActionColor
+            </td>
+            <td>
+                @hero.HeroClass.ToString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Unspent Stamina: @hero.Stamina
+            </td>
+            <td>
+                Spent Stamina: @hero.SpentStamina
+            </td>
+            <td>
+                Damage: @hero.Damage
+            </td>
+        </tr>
+    </table>
+}
+@code {
+    [Parameter]
+    public Models.Hero? hero { get; set; }
+}
