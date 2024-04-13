@@ -1,0 +1,21 @@
+﻿@page "/"
+@using AgemoniaCombatHelper.Models
+
+<PageTitle>Agemonia Combat Helper</PageTitle>
+@foreach (var entity in controller.TurnOrder)
+{
+    switch (entity)
+    {
+        case Models.Hero:
+            <Hero @key="entity" hero="(Models.Hero)entity" />
+            break;
+        case Models.Enemy:
+            <Enemy @key="entity" enemy="(Models.Enemy)entity" />
+            break;
+    }
+}
+
+
+@code{
+    private CombatController controller = new();
+}

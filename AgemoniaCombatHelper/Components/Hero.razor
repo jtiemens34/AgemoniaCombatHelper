@@ -1,5 +1,4 @@
-﻿@if (hero is not null)
-{
+﻿@if (hero is not null) {
     <table>
         <tr>
             <td rowspan="2">
@@ -20,9 +19,21 @@
                 Damage: @hero.Damage
             </td>
         </tr>
+        <tr>
+            <td colspan="3">
+                <button @onclick="Damage">Take Damage</button>
+                <button @onclick="HealDamage">Heal Damage</button>
+                <button @onclick="SpendStam">Spend Stamina</button>
+                <button @onclick="RecoverStam">Recover Stamina</button>
+            </td>
+        </tr>
     </table>
 }
 @code {
     [Parameter]
     public Models.Hero? hero { get; set; }
+    public void Damage() { hero?.TakeDamage(1); }
+    public void HealDamage() { hero?.HealDamage(1); }
+    public void SpendStam() { hero?.SpendStamina(1); }
+    public void RecoverStam() { hero?.RecoverStamina(1); }
 }
