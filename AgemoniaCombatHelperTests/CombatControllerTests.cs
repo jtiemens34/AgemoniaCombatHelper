@@ -9,9 +9,9 @@ public class CombatControllerTests
     private readonly Hero _greenPlayer = new(HeroClass.Torrax, 1);
     private readonly Hero _bluePlayer = new(HeroClass.Torrax, 1);
 
-    private readonly Enemy _redEnemy = new(5, 0);
-    private readonly Enemy _greenEnemy = new(5, 0);
-    private readonly Enemy _blueEnemy = new(5, 0);
+    private readonly Enemy _redEnemy = new("", 5, 0);
+    private readonly Enemy _greenEnemy = new("", 5, 0);
+    private readonly Enemy _blueEnemy = new("", 5, 0);
     public CombatControllerTests()
     {
         _redPlayer.ActionColor = ActionColor.Red;

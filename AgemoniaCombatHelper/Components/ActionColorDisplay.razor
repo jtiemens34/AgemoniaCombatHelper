@@ -1,0 +1,30 @@
+<img src=@ImageUrl />
+
+@code{
+    [Parameter]
+    public bool IsEnemy { get; set; }
+    [Parameter]
+    public ActionColor Color
+    {
+        get { return Color; }
+        set
+        {
+            switch (value)
+            {
+                case ActionColor.Red:
+                    if (IsEnemy) ImageUrl = "images/red_enemy.png";
+                    else ImageUrl = "images/red_hero.png";
+                    break;
+                case ActionColor.Blue:
+                    if (IsEnemy) ImageUrl = "images/blue_enemy.png";
+                    else ImageUrl = "images/blue_hero.png";
+                    break;
+                case ActionColor.Green:
+                    if (IsEnemy) ImageUrl = "images/green_enemy.png";
+                    else ImageUrl = "images/green_hero.png";
+                    break;
+            }
+        }
+    }
+    private string ImageUrl;
+}

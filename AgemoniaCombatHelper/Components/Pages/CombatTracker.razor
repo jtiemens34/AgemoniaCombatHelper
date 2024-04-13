@@ -4,18 +4,46 @@
 <PageTitle>Agemonia Combat Helper</PageTitle>
 @foreach (var entity in controller.TurnOrder)
 {
-    switch (entity)
+    if (entity is Hero)
     {
-        case Models.Hero:
-            <Hero @key="entity" hero="(Models.Hero)entity" />
-            break;
-        case Models.Enemy:
-            <Enemy @key="entity" enemy="(Models.Enemy)entity" />
-            break;
+        <HeroComponent @key="entity" Hero="(Hero)entity" />
+    }
+    else
+    {
+        <EnemyComponent @key="entity" Enemy="(Enemy)entity" />
     }
 }
 
 
 @code{
     private CombatController controller = new();
+
+    public Hero RedPlayer = new(HeroClass.Torrax, 1);
+    public Hero GreenPlayer = new(HeroClass.Matajam, 1);
+    public Hero BluePlayer = new(HeroClass.ZuvaSai, 1);
+
+    public Enemy RedEnemy = new("Red Enemy", 5, 0);
+    public Enemy GreenEnemy = new("Green Enemy", 5, 0);
+    public Enemy BlueEnemy = new("Blue Enemy", 5, 0);
+
+    protected override void OnInitialized() 
+    {
+        RedPlayer.ActionColor = ActionColor.Red;
+        BluePlayer.ActionColor = ActionColor.Blue;
+        GreenPlayer.ActionColor = ActionColor.Green;
+
+        RedEnemy.ActionColor = ActionColor.Red;
+        BlueEnemy.ActionColor = ActionColor.Blue;
+        GreenEnemy.ActionColor = ActionColor.Green;
+
+        controller.Heroes.Add(RedPlayer);
+        controller.Heroes.Add(GreenPlayer);
+        controller.Heroes.Add(BluePlayer);
+
+        controller.Enemies.Add(RedEnemy);
+        controller.Enemies.Add(GreenEnemy);
+        controller.Enemies.Add(BlueEnemy);
+
+        controller.DrawNewCard();
+    }
 }
