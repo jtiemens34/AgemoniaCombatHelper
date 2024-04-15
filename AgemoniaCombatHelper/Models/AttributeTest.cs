@@ -1,2 +1,2 @@
 ﻿namespace AgemoniaCombatHelper.Models;
-public record AttributeTest(Attribute tttributeToTest, int TestTarget);
+public record AttributeTest(Attribute AtttributeToTest, int TestTarget);

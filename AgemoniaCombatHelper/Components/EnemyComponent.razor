@@ -1,14 +1,13 @@
 ﻿@if (Enemy is not null) {
-    <table>
-        <tr>
-            <td rowspan="2">
-                <ActionColorDisplay IsEnemy="true" Color="Enemy.ActionColor" />
-            </td>
-            <td>
-                @Enemy.Name
-            </td>
-        </tr>
-    </table>
+    <div class="enemy">
+        <div class="banner">
+            <ActionColorDisplay IsEnemy="true" Color="@Enemy.ActionColor" />
+            <div class="enemy-name">@Enemy.Name</div>
+        </div>
+        <div class="action">
+            <EnemyActionDisplay EnemyAttack="@Enemy.EnemyAttack" />
+        </div>
+    </div>
 }
 @code {
     [Parameter]

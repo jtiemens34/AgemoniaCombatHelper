@@ -16,7 +16,7 @@
 
 
 @code{
-    private CombatController controller = new();
+    public CombatController controller = new();
 
     public Hero RedPlayer = new(HeroClass.Torrax, 1);
     public Hero GreenPlayer = new(HeroClass.Matajam, 1);
@@ -35,6 +35,10 @@
         RedEnemy.ActionColor = ActionColor.Red;
         BlueEnemy.ActionColor = ActionColor.Blue;
         GreenEnemy.ActionColor = ActionColor.Green;
+
+        RedEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
+        BlueEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
+        GreenEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
 
         controller.Heroes.Add(RedPlayer);
         controller.Heroes.Add(GreenPlayer);

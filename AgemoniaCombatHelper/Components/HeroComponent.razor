@@ -1,25 +1,10 @@
 ﻿@if (Hero is not null) {
-    <table>
-        <tr>
-            <td rowspan="2">
-                <ActionColorDisplay IsEnemy="false" Color="@Hero.ActionColor" />
-            </td>
-            <td>
-                @Hero.HeroClass.ToString()
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Unspent Stamina: @Hero.Stamina
-            </td>
-            <td>
-                Spent Stamina: @Hero.SpentStamina
-            </td>
-            <td>
-                Damage: @Hero.Damage
-            </td>
-        </tr>
-    </table>
+    <div class="hero">
+        <div class="banner">
+            <ActionColorDisplay IsEnemy="false" Color="@Hero.ActionColor" />
+            @Hero.HeroClass.ToString()
+        </div>
+    </div>
 }
 @code {
     [Parameter]

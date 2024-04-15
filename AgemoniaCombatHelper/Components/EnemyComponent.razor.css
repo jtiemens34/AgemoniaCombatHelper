@@ -1,0 +1,13 @@
+﻿.enemy {
+    background-color: rgb(58, 41, 83);
+    border: 2px solid rgb(213, 179, 69);
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+}
+.banner {
+    margin: 10px;
+    display: flex;
+    background-color: rgb(113, 162, 70);
+    border: 2px solid rgb(213, 179, 69);
+}

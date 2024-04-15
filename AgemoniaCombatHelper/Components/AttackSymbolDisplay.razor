@@ -1,0 +1,25 @@
+﻿@if (AttackSymbolToDisplay is not null) {
+    <img src="@ImageUrl" />
+}
+
+@code {
+    [Parameter]
+    public AttackSymbol? AttackSymbolToDisplay { get; set; }
+    protected override void OnParametersSet()
+    {
+        switch (AttackSymbolToDisplay)
+        {
+            case AttackSymbol.FullyOpen:
+                ImageUrl = "images/fully-open.png";
+                break;
+            case AttackSymbol.HalfOpen:
+                ImageUrl = "images/half-open.png";
+                break;
+            case AttackSymbol.Squint:
+                ImageUrl = "images/squint.png";
+                break;
+        }
+        base.OnParametersSet();
+    }
+    private string? ImageUrl;
+}
