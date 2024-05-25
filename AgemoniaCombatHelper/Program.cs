@@ -1,4 +1,5 @@
 using AgemoniaCombatHelper.Components;
+using AgemoniaCombatHelper.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseWebRoot("wwwroot").UseStaticWebAssets();
@@ -6,6 +7,7 @@ builder.WebHost.UseWebRoot("wwwroot").UseStaticWebAssets();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddSingleton<ICombatService, CombatController>();
 
 var app = builder.Build();
 

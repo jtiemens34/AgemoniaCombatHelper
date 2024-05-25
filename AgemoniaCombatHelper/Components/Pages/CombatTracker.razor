@@ -1,8 +1,9 @@
-﻿@page "/"
+﻿@rendermode InteractiveServer
+@page "/"
 @using AgemoniaCombatHelper.Models
 
 <PageTitle>Agemonia Combat Helper</PageTitle>
-@foreach (var entity in controller.TurnOrder)
+@foreach (var entity in controller.GetEntities())
 {
     if (entity is Hero)
     {
@@ -14,9 +15,15 @@
     }
 }
 
+<button class="btn btn-primary" @onclick="ModalOpen">Modal!</button>
+<AddHeroModal @ref="addHeroModal" />
+
 
 @code{
-    public CombatController controller = new();
+    [Inject]
+    public ICombatService controller { get; set; }
+
+    public AddHeroModal? addHeroModal { get; set; }
 
     public Hero RedPlayer = new(HeroClass.Torrax, 1);
     public Hero GreenPlayer = new(HeroClass.Matajam, 1);
@@ -40,14 +47,20 @@
         BlueEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
         GreenEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
 
-        controller.Heroes.Add(RedPlayer);
-        controller.Heroes.Add(GreenPlayer);
-        controller.Heroes.Add(BluePlayer);
+        controller.AddHero(RedPlayer);
+        controller.AddHero(GreenPlayer);
+        controller.AddHero(BluePlayer);
 
-        controller.Enemies.Add(RedEnemy);
-        controller.Enemies.Add(GreenEnemy);
-        controller.Enemies.Add(BlueEnemy);
+        controller.AddEnemy(RedEnemy);
+        controller.AddEnemy(GreenEnemy);
+        controller.AddEnemy(BlueEnemy);
 
         controller.DrawNewCard();
+
+        base.OnInitialized();
+    }
+    private void ModalOpen()
+    {
+        addHeroModal.Open();
     }
 }

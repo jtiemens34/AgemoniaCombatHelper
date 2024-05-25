@@ -1,16 +1,11 @@
 ﻿using System.Text.Json;
 
 namespace AgemoniaCombatHelper.Models;
-public class InitiativeDeck
+public class CombatController : ICombatService
 {
-    public List<InitiativeCard>? Data { get; set; }
-}
-public class CombatController
-{
-    public List<Hero> Heroes { get; set; }
-    public List<Enemy> Enemies { get; set; }
-
-    public List<Entity> TurnOrder { get; private set; }
+    private List<Hero> Heroes;
+    private List<Enemy> Enemies;
+    private List<Entity> TurnOrder;
 
     public InitiativeCard? ActiveCard { get; private set; }
     private InitiativeDeck? InitiativeCards;
@@ -26,7 +21,9 @@ public class CombatController
     }
     public void DrawNewCard()
     {
-        ActiveCard = InitiativeCards.Data[0];
+        ActiveCard = InitiativeCards?.Data?[0];
+        if (ActiveCard is null) return;
+        if (ActiveCard.Actions is null) return;
         foreach (Action action in ActiveCard.Actions)
         {
             if (action.EntityType == EntityType.Hero && Heroes.Any(h => h.ActionColor == action.ActionColor))
@@ -38,5 +35,20 @@ public class CombatController
                 TurnOrder.Add(Enemies.Find(e => e.ActionColor == action.ActionColor));
             }
         }
+    }
+
+    public void AddHero(Hero hero)
+    {
+        Heroes.Add(hero);
+    }
+
+    public void AddEnemy(Enemy enemy)
+    {
+        Enemies.Add(enemy);
+    }
+
+    public List<Entity> GetEntities()
+    {
+        return TurnOrder;
     }
 }
