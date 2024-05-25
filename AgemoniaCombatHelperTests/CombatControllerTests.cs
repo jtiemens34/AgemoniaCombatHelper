@@ -1,4 +1,5 @@
 ﻿using AgemoniaCombatHelper.Models;
+using System.Text.Json;
 
 namespace AgemoniaCombatHelperTests;
 public class CombatControllerTests
@@ -22,24 +23,30 @@ public class CombatControllerTests
         _greenEnemy.ActionColor = ActionColor.Green;
         _blueEnemy.ActionColor = ActionColor.Blue;
 
-        _controller.Heroes.Add(_redPlayer);
-        _controller.Heroes.Add(_greenPlayer);
-        _controller.Heroes.Add(_bluePlayer);
+        _controller.AddHero(_redPlayer);
+        _controller.AddHero(_greenPlayer);
+        _controller.AddHero(_bluePlayer);
 
-        _controller.Enemies.Add(_redEnemy);
-        _controller.Enemies.Add(_greenEnemy);
-        _controller.Enemies.Add(_blueEnemy);
+        _controller.AddEnemy(_redEnemy);
+        _controller.AddEnemy(_greenEnemy);
+        _controller.AddEnemy(_blueEnemy);
+
+        string jsonFile = File.ReadAllText("InitiativeCards.json");
+        InitiativeDeck deck = JsonSerializer.Deserialize<InitiativeDeck>(jsonFile);
+        _controller.SetCardsFromJson(deck);
     }
     [Fact]
     public void CorrectOrder()
     {
         _controller.DrawNewCard();
 
-        Assert.True(_controller.TurnOrder[0].Equals(_blueEnemy));
-        Assert.True(_controller.TurnOrder[1].Equals(_redPlayer));
-        Assert.True(_controller.TurnOrder[2].Equals(_redEnemy));
-        Assert.True(_controller.TurnOrder[3].Equals(_bluePlayer));
-        Assert.True(_controller.TurnOrder[4].Equals(_greenPlayer));
-        Assert.True(_controller.TurnOrder[5].Equals(_greenEnemy));
+        List<Entity> TurnOrder = _controller.GetEntities();
+
+        Assert.True(TurnOrder[0].Equals(_blueEnemy));
+        Assert.True(TurnOrder[1].Equals(_redPlayer));
+        Assert.True(TurnOrder[2].Equals(_redEnemy));
+        Assert.True(TurnOrder[3].Equals(_bluePlayer));
+        Assert.True(TurnOrder[4].Equals(_greenPlayer));
+        Assert.True(TurnOrder[5].Equals(_greenEnemy));
     }
 }

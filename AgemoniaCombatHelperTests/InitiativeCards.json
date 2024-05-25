@@ -1,0 +1,613 @@
+{
+  "Data": [
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "HalfOpen"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "Horns"
+        }
+      ]
+    },
+    {
+      "Shuffle": true,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "FullyOpen"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint"
+        }
+      ]
+    },
+    {
+      "Shuffle": true,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "SnakeAndHorns"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "SnakeAndHorns"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint",
+          "Modifier": "SnakeAndHorns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "Snake"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "Squint",
+          "Modifier": "Snake"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "Snake"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "Snake"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "Squint",
+          "Modifier": "Horns"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue",
+          "Modifier": "ExtraManeuver"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green",
+          "Modifier": "ExtraManeuver"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "FullyOpen"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green",
+          "Modifier": "ExtraManeuver"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint",
+          "Modifier": "Snake"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "FullyOpen",
+          "Modifier": "Snake"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        }
+      ]
+    },
+    {
+      "Shuffle": false,
+      "Actions": [
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Red",
+          "AttackSymbol": "HalfOpen"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Red"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Blue"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Blue",
+          "AttackSymbol": "Squint",
+          "Modifier": "Horns"
+        },
+        {
+          "EntityType": "Hero",
+          "ActionColor": "Green"
+        },
+        {
+          "EntityType": "Enemy",
+          "ActionColor": "Green",
+          "AttackSymbol": "Squint"
+        }
+      ]
+    }
+  ]
+}
