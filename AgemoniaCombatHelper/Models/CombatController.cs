@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
+using Microsoft.AspNetCore.Components;
 
 namespace AgemoniaCombatHelper.Models;
 public class CombatController : ICombatService
@@ -11,13 +13,12 @@ public class CombatController : ICombatService
     private InitiativeDeck? InitiativeCards;
     private InitiativeDeck? Discard;
 
+
     public CombatController()
     {
         Heroes = [];
         Enemies = [];
         TurnOrder = [];
-        string jsonFile = File.ReadAllText("Data/InitiativeCards.json");
-        InitiativeCards = JsonSerializer.Deserialize<InitiativeDeck>(jsonFile);
     }
     public void DrawNewCard()
     {
@@ -50,5 +51,10 @@ public class CombatController : ICombatService
     public List<Entity> GetEntities()
     {
         return TurnOrder;
+    }
+
+    public void SetCardsFromJson(InitiativeDeck deck)
+    {
+        InitiativeCards = deck;
     }
 }

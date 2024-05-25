@@ -1,5 +1,4 @@
-﻿@rendermode InteractiveServer
-@page "/"
+﻿@page "/"
 @using AgemoniaCombatHelper.Models
 
 <PageTitle>Agemonia Combat Helper</PageTitle>
@@ -22,6 +21,8 @@
 @code{
     [Inject]
     public ICombatService controller { get; set; }
+    [Inject]
+    public HttpClient Client { get; private set; }
 
     public AddHeroModal? addHeroModal { get; set; }
 
@@ -33,8 +34,10 @@
     public Enemy GreenEnemy = new("Green Enemy", 5, 0);
     public Enemy BlueEnemy = new("Blue Enemy", 5, 0);
 
-    protected override void OnInitialized() 
+    protected override async Task<ICombatService> OnInitializedAsync()
     {
+        controller.SetCardsFromJson(await Client.GetFromJsonAsync<InitiativeDeck>("InitiativeCards.json"));
+
         RedPlayer.ActionColor = ActionColor.Red;
         BluePlayer.ActionColor = ActionColor.Blue;
         GreenPlayer.ActionColor = ActionColor.Green;
@@ -57,7 +60,7 @@
 
         controller.DrawNewCard();
 
-        base.OnInitialized();
+        return controller;
     }
     private void ModalOpen()
     {
