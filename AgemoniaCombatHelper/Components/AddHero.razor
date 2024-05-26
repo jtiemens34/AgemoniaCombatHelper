@@ -1,0 +1,39 @@
+﻿<EditForm Model="heroToAdd" OnSubmit="Submit" FormName="HeroAddForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label>
+            Class: 
+            <InputSelect @bind-Value="heroToAdd!.HeroClass">
+                @foreach (var heroClass in Enum.GetValues(typeof(HeroClass)))
+                {
+                    <option value="@heroClass">@heroClass</option>
+                }
+            </InputSelect>
+        </label>
+    </div>
+    <div>
+        <label>
+            Level: 
+            <InputNumber @bind-Value="heroToAdd!.Level" />
+        </label>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Add Hero</button>
+    </div>
+</EditForm>
+
+@code {
+    [Inject]
+    public ICombatService controller { get; set; }
+    [SupplyParameterFromForm]
+    public Hero? heroToAdd { get; set; }
+
+    protected override void OnInitialized() => heroToAdd ??= new(HeroClass.Venia, 1);
+
+    private void Submit()
+    {
+        if (heroToAdd is null) return;
+        controller.AddHero(heroToAdd);
+    }
+}

@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using AgemoniaCombatHelper.Models
+@using AgemoniaCombatHelper.Components
 
 <PageTitle>Agemonia Combat Helper</PageTitle>
 @foreach (var entity in controller.GetEntities())
@@ -14,8 +15,20 @@
     }
 }
 
-<button class="btn btn-primary" @onclick="ModalOpen">Modal!</button>
-<AddHeroModal @ref="addHeroModal" />
+<button class="btn btn-primary" @onclick="() => addHeroModal?.Open()">Add Hero!</button>
+<button class="btn btn-primary" @onclick="() => modal2?.Open()">Modal 2 Open</button>
+<Modal @ref="addHeroModal">
+    <Title>Add Hero</Title>
+    <Body>
+        <AddHero />
+    </Body>
+</Modal>
+<Modal @ref="modal2">
+    <Title>Modal 2</Title>
+    <Body>
+        <h3>Modal 2</h3>
+    </Body>
+</Modal>
 
 
 @code{
@@ -24,7 +37,8 @@
     [Inject]
     public HttpClient Client { get; private set; }
 
-    public AddHeroModal? addHeroModal { get; set; }
+    public Modal? addHeroModal { get; set; }
+    public Modal? modal2 { get; set; }
 
     public Hero RedPlayer = new(HeroClass.Torrax, 1);
     public Hero GreenPlayer = new(HeroClass.Matajam, 1);
@@ -61,9 +75,5 @@
         controller.DrawNewCard();
 
         return controller;
-    }
-    private void ModalOpen()
-    {
-        addHeroModal.Open();
     }
 }

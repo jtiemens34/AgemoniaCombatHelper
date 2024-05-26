@@ -1,8 +1,12 @@
-﻿namespace AgemoniaCombatHelper.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AgemoniaCombatHelper.Models;
 
 public class Hero : Entity
 {
+    [Required]
     public HeroClass HeroClass { get; set; }
+    [Required, Range(minimum:1, maximum:5)]
     public int Level { get; set; }
     public int Stamina { get; set; }
     private readonly int WoundedStamina;

@@ -1,4 +1,5 @@
-﻿<div class="modal @modalClass" tabindex="-1" role="dialog" style="display:@modalDisplay">
+﻿@namespace AgemoniaCombatHelper.Components
+<div class="modal @modalClass" tabindex="-1" role="dialog" style="display:@modalDisplay">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,11 +9,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                @Body
+                <CascadingValue Value="Body">
+                    @Body
+                </CascadingValue>
             </div>
-            <div class="modal-footer">
-                @Footer
-            </div>
+            @if (Footer is not null)
+            {
+                <div class="modal-footer">
+                    @Footer
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -29,20 +35,25 @@
     [Parameter]
     public RenderFragment? Footer { get; set; }
 
-    protected string modalDisplay = "none;";
-    protected string modalClass = "";
-    protected bool showBackdrop = false;
+    [CascadingParameter]
+    protected string modalDisplay { get; set; } = "none;";
+    [CascadingParameter]
+    protected string modalClass { get; set; }= "";
+    [CascadingParameter]
+    protected bool showBackdrop { get; set; }= false;
 
     public void Open()
     {
         modalDisplay = "block;";
         modalClass = "show";
         showBackdrop = true;
+        StateHasChanged();
     }
     public void Close()
     {
         modalDisplay = "none;";
         modalClass = "show";
         showBackdrop = false;
+        StateHasChanged();
     }
 }
