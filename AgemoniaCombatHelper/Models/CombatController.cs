@@ -36,6 +36,10 @@ public class CombatController : ICombatService
                 TurnOrder.Add(Enemies.Find(e => e.ActionColor == action.ActionColor));
             }
         }
+        foreach (Hero unusedHero in Heroes)
+        {
+            if (!TurnOrder.Contains(unusedHero)) TurnOrder.Add(unusedHero);
+        }
     }
 
     public void AddHero(Hero hero)

@@ -11,5 +11,7 @@ public enum ActionColor
     [EnumMember(Value = "Blue")]
     Blue,
     [EnumMember(Value = "Green")]
-    Green
+    Green,
+    [EnumMember(Value = "None")]
+    None
 }
