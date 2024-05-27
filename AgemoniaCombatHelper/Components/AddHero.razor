@@ -28,6 +28,8 @@
     public CombatController controller { get; set; }
     [SupplyParameterFromForm]
     public Hero? heroToAdd { get; set; }
+    [Parameter]
+    public Modal ParentModal { get; set; }
 
     protected override void OnInitialized() => heroToAdd ??= new(HeroClass.Venia, 1);
 
@@ -35,5 +37,6 @@
     {
         if (heroToAdd is null) return;
         controller.AddHero(heroToAdd);
+        ParentModal.Close();
     }
 }

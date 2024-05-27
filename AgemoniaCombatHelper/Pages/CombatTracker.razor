@@ -1,9 +1,7 @@
 ﻿@page "/"
-@using AgemoniaCombatHelper.Models
-@using AgemoniaCombatHelper.Components
 
 <PageTitle>Agemonia Combat Helper</PageTitle>
-@foreach (var entity in controller.GetEntities())
+@foreach (var entity in controller.TurnOrder)
 {
     if (entity is Hero)
     {
@@ -20,7 +18,7 @@
 <Modal @ref="addHeroModal">
     <Title>Add Hero</Title>
     <Body>
-        <AddHero />
+        <AddHero ParentModal="@addHeroModal" />
     </Body>
 </Modal>
 <Modal @ref="modal2">
@@ -33,26 +31,25 @@
 
 @code{
     [Inject]
-    public ICombatService controller { get; set; }
+    public CombatController controller { get; set; }
     [Inject]
     public HttpClient Client { get; private set; }
 
-    public Modal? addHeroModal { get; set; }
-    public Modal? modal2 { get; set; }
+    private Modal addHeroModal;
+    private Modal modal2;
 
-    public Hero RedPlayer = new(HeroClass.Torrax, 1);
     public Hero GreenPlayer = new(HeroClass.Matajam, 1);
     public Hero BluePlayer = new(HeroClass.ZuvaSai, 1);
+    public Hero NoActionPlayer = new(HeroClass.Venia, 1);
 
     public Enemy RedEnemy = new("Red Enemy", 5, 0);
     public Enemy GreenEnemy = new("Green Enemy", 5, 0);
     public Enemy BlueEnemy = new("Blue Enemy", 5, 0);
 
-    protected override async Task<ICombatService> OnInitializedAsync()
+    protected override async Task<CombatController> OnInitializedAsync()
     {
         controller.SetCardsFromJson(await Client.GetFromJsonAsync<InitiativeDeck>("InitiativeCards.json"));
 
-        RedPlayer.ActionColor = ActionColor.Red;
         BluePlayer.ActionColor = ActionColor.Blue;
         GreenPlayer.ActionColor = ActionColor.Green;
 
@@ -64,9 +61,9 @@
         BlueEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
         GreenEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
 
-        controller.AddHero(RedPlayer);
         controller.AddHero(GreenPlayer);
         controller.AddHero(BluePlayer);
+        controller.AddHero(NoActionPlayer);
 
         controller.AddEnemy(RedEnemy);
         controller.AddEnemy(GreenEnemy);
@@ -75,5 +72,15 @@
         controller.DrawNewCard();
 
         return controller;
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (!firstRender) controller.SetCombatTracker(this);
+    }
+
+    public void Refresh()
+    {
+        StateHasChanged();
     }
 }
