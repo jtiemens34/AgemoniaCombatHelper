@@ -3,7 +3,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Components;
 
 namespace AgemoniaCombatHelper.Models;
-public class CombatController : ICombatService
+public class CombatController
 {
     private List<Hero> Heroes;
     private List<Enemy> Enemies;
