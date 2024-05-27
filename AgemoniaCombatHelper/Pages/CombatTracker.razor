@@ -13,7 +13,7 @@
     }
 }
 
-<button class="btn btn-primary" @onclick="() => addHeroModal?.Open()">Add Hero!</button>
+<button class="btn btn-primary" @onclick="() => addHeroModal?.Open()">Add Hero</button>
 <button class="btn btn-primary" @onclick="() => modal2?.Open()">Modal 2 Open</button>
 <Modal @ref="addHeroModal">
     <Title>Add Hero</Title>
@@ -42,32 +42,13 @@
     public Hero BluePlayer = new(HeroClass.ZuvaSai, 1);
     public Hero NoActionPlayer = new(HeroClass.Venia, 1);
 
-    public Enemy RedEnemy = new("Red Enemy", 5, 0);
-    public Enemy GreenEnemy = new("Green Enemy", 5, 0);
-    public Enemy BlueEnemy = new("Blue Enemy", 5, 0);
+    public Enemy Skitterer = new("Skitterer", ActionColor.Red, 5, "s2skitterer.png");
 
     protected override async Task<CombatController> OnInitializedAsync()
     {
         controller.SetCardsFromJson(await Client.GetFromJsonAsync<InitiativeDeck>("InitiativeCards.json"));
 
-        BluePlayer.ActionColor = ActionColor.Blue;
-        GreenPlayer.ActionColor = ActionColor.Green;
-
-        RedEnemy.ActionColor = ActionColor.Red;
-        BlueEnemy.ActionColor = ActionColor.Blue;
-        GreenEnemy.ActionColor = ActionColor.Green;
-
-        RedEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
-        BlueEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
-        GreenEnemy.EnemyAttack = new(5, AttackSymbol.HalfOpen, new(Models.Attribute.Agility, 3));
-
-        controller.AddHero(GreenPlayer);
-        controller.AddHero(BluePlayer);
-        controller.AddHero(NoActionPlayer);
-
-        controller.AddEnemy(RedEnemy);
-        controller.AddEnemy(GreenEnemy);
-        controller.AddEnemy(BlueEnemy);
+        controller.AddEnemy(Skitterer);
 
         controller.DrawNewCard();
 

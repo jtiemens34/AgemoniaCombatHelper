@@ -4,9 +4,7 @@
             <ActionColorDisplay IsEnemy="true" Color="@Enemy.ActionColor" />
             <div class="enemy-name">@Enemy.Name</div>
         </div>
-        <div class="action">
-            <EnemyActionDisplay EnemyAttack="@Enemy.EnemyAttack" />
-        </div>
+        <div style='background-image: url("images/monsters/@Enemy.ImagePath");' class="@Enemy.AttackSymbol.ToString()" />
     </div>
 }
 @code {

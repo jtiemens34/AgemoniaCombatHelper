@@ -1,11 +1,17 @@
-﻿
-namespace AgemoniaCombatHelper.Models;
+﻿namespace AgemoniaCombatHelper.Models;
 
-public class Enemy(string name, int health, int provokeDamage, int provokeRange = 0) : Entity
+public class Enemy : Entity
 {
-    public string Name { get; set; } = name;
-    public int Health { get; set; } = health;
-    public int ProvokeDamage { get; set; } = provokeDamage;
-    public int ProvokeRange { get; set; } = provokeRange;
-    public EnemyAttack? EnemyAttack { get; set; }
+    public string Name { get; set; }
+    public int Health { get; set; }
+    public string ImagePath { get; set; }
+    public AttackSymbol AttackSymbol { get; set; }
+    public Enemy(string name, ActionColor actionColor, int health, string imagePath)
+    {
+        Name = name;
+        ActionColor = actionColor;
+        Health = health;
+        ImagePath = imagePath;
+        AttackSymbol = AttackSymbol.None;
+    }
 }

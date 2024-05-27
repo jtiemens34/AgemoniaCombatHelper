@@ -11,3 +11,18 @@
     background-color: rgb(113, 162, 70);
     border: 2px solid rgb(213, 179, 69);
 }
+.HalfOpen, .FullyOpen, .Squint {
+    width: 800px;
+    height: 190px;
+    background-position-x: -590px;
+}
+.Squint {
+    background-position-y: 200px;
+}
+.HalfOpen {
+    background-position-y: 400px;
+}
+.FullyOpen {
+    background-position-y: 600px;
+}
+

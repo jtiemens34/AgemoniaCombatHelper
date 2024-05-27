@@ -34,6 +34,12 @@ public class CombatController
         if (ActiveCard is null) return;
         if (ActiveCard.Actions is null) return;
         TurnOrder.Clear();
+        // Set enemies attack symbol
+        foreach (var enemy in Enemies)
+        {
+            enemy.AttackSymbol = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).FirstOrDefault().AttackSymbol;
+        }
+        // Arrange in correct turn order
         foreach (Action action in ActiveCard.Actions)
         {
             if (action.EntityType == EntityType.Hero && Heroes.Any(h => h.ActionColor == action.ActionColor))
