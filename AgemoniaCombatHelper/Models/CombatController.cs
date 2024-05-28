@@ -1,11 +1,11 @@
 ﻿using AgemoniaCombatHelper.Pages;
-using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace AgemoniaCombatHelper.Models;
 public class CombatController
 {
     private List<Hero> Heroes;
     private List<Enemy> Enemies;
+    private Scenarios Scenarios;
     public List<Entity> TurnOrder;
 
     private CombatTracker CombatTracker;
@@ -31,9 +31,14 @@ public class CombatController
     private void ArrangeEntities()
     {
         // TODO: Change logic to handle multiple entities from the same action color.
-        if (ActiveCard is null) return;
-        if (ActiveCard.Actions is null) return;
         TurnOrder.Clear();
+        // If no card has been drawn, simply add enemies and heroes
+        if (ActiveCard is null)
+        {
+            foreach (var enemy in Enemies) TurnOrder.Add(enemy);
+            foreach (var hero in Heroes) TurnOrder.Add(hero);
+            return;
+        }
         // Set enemies attack symbol
         foreach (var enemy in Enemies)
         {
@@ -60,12 +65,14 @@ public class CombatController
     public void AddHero(Hero hero)
     {
         Heroes.Add(hero);
+        foreach (var enemy in Enemies) enemy.SetInitialHP(Heroes.Count);
         ArrangeEntities();
         CombatTracker?.Refresh();
     }
 
     public void AddEnemy(Enemy enemy)
     {
+        enemy.SetInitialHP(Heroes.Count);
         Enemies.Add(enemy);
         ArrangeEntities();
         CombatTracker?.Refresh();
@@ -79,6 +86,18 @@ public class CombatController
     public void SetCardsFromJson(InitiativeDeck deck)
     {
         InitiativeCards = deck;
+    }
+    public void SetScenariosFromJson(Scenarios scenarios)
+    {
+        Scenarios = scenarios;
+    }
+
+    public void LoadScenario(int scenarioNumber)
+    {
+        Enemies.Clear();
+        if (scenarioNumber == 1) return;
+        List<Enemy> enemiesToLoad = Scenarios.Data.Where(s => s.ScenarioNumber == scenarioNumber).First().Enemies;
+        foreach (var enemy in enemiesToLoad) AddEnemy(enemy);
     }
 
     public void SetCombatTracker(CombatTracker tracker)

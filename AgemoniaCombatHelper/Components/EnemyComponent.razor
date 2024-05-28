@@ -3,11 +3,30 @@
         <div class="banner">
             <ActionColorDisplay IsEnemy="true" Color="@Enemy.ActionColor" />
             <div class="enemy-name">@Enemy.Name</div>
+            <br />
+            <div>HP: @Enemy.Health</div>
         </div>
-        <div style='background-image: url("images/monsters/@Enemy.ImagePath");' class="@Enemy.AttackSymbol.ToString()" />
+        <div style='background-image: url("images/scenarios/@Enemy.ImagePath"); @position' class="@Enemy.AttackSymbol.ToString()" />
     </div>
 }
 @code {
     [Parameter]
     public Enemy? Enemy { get; set; }
+    private string position;
+    protected override void OnParametersSet()
+    {
+        int CARD_WIDTH = 810, CARD_HEIGHT = 1415;
+        int X_OFFSET = -225, Y_OFFSET = -30;
+        int finalYPosition = Y_OFFSET - (Enemy!.PositionY * CARD_HEIGHT);
+        int finalXPosition = X_OFFSET - (Enemy!.PositionX * CARD_WIDTH);
+        // Also include calculations for shifting for Attack Symbol
+        switch (Enemy!.AttackSymbol)
+        {
+            case AttackSymbol.FullyOpen: break;
+            case AttackSymbol.HalfOpen: finalXPosition -= 200; break;
+            case AttackSymbol.Squint: finalXPosition -= 400; break;
+        }
+        position = $"background-position: right {finalYPosition}px top {finalXPosition}px";
+        base.OnParametersSet();
+    }
 }

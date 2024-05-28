@@ -14,17 +14,18 @@
 }
 
 <button class="btn btn-primary" @onclick="() => addHeroModal?.Open()">Add Hero</button>
-<button class="btn btn-primary" @onclick="() => modal2?.Open()">Modal 2 Open</button>
+<button class="btn btn-primary" @onclick="() => selectScenarioModal?.Open()">Select Scenario</button>
+<button class="btn btn-primary" @onclick="() => controller.DrawNewCard()">Draw Initiative Card</button>
 <Modal @ref="addHeroModal">
     <Title>Add Hero</Title>
     <Body>
         <AddHero ParentModal="@addHeroModal" />
     </Body>
 </Modal>
-<Modal @ref="modal2">
-    <Title>Modal 2</Title>
+<Modal @ref="@selectScenarioModal">
+    <Title>Select Scenario</Title>
     <Body>
-        <h3>Modal 2</h3>
+        <SelectScenario ParentModal="@selectScenarioModal" />
     </Body>
 </Modal>
 
@@ -33,25 +34,15 @@
     [Inject]
     public CombatController controller { get; set; }
     [Inject]
-    public HttpClient Client { get; private set; }
+    public HttpClient Client { get; set; }
 
     private Modal addHeroModal;
-    private Modal modal2;
-
-    public Hero GreenPlayer = new(HeroClass.Matajam, 1);
-    public Hero BluePlayer = new(HeroClass.ZuvaSai, 1);
-    public Hero NoActionPlayer = new(HeroClass.Venia, 1);
-
-    public Enemy Skitterer = new("Skitterer", ActionColor.Red, 5, "s2skitterer.png");
+    private Modal selectScenarioModal;
 
     protected override async Task<CombatController> OnInitializedAsync()
     {
         controller.SetCardsFromJson(await Client.GetFromJsonAsync<InitiativeDeck>("InitiativeCards.json"));
-
-        controller.AddEnemy(Skitterer);
-
-        controller.DrawNewCard();
-
+        controller.SetScenariosFromJson(await Client.GetFromJsonAsync<Scenarios>("Scenarios.json"));
         return controller;
     }
     protected override void OnAfterRender(bool firstRender)

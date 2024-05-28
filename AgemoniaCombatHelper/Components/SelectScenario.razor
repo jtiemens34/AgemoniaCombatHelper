@@ -1,0 +1,32 @@
+﻿<EditForm Model="scenarioToLoad" OnSubmit="Submit" FormName="SelectScenarioForm">
+    <div>
+        <label>
+            Scenario Number: 
+            <InputSelect @bind-Value="scenarioToLoad!.ScenarioNumber">
+                @for (int i = 1; i <= 35; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </InputSelect>
+        </label>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Select Scenario</button>
+    </div>
+</EditForm>
+@code {
+    [Inject]
+    public CombatController controller { get; set; }
+    [SupplyParameterFromForm]
+    public Scenario scenarioToLoad { get; set; }
+    [Parameter]
+    public Modal ParentModal { get; set; }
+
+    protected override void OnInitialized() => scenarioToLoad ??= new();
+
+    private void Submit()
+    {
+        controller.LoadScenario(scenarioToLoad.ScenarioNumber);
+        ParentModal.Close();
+    }
+}

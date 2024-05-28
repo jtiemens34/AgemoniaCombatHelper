@@ -1,10 +1,16 @@
 {
   "Data": [
     {
+      "ScenarioNumber": 1,
+      "Enemies": []
+    },
+    {
       "ScenarioNumber": 2,
-      "Monsters": [
+      "Enemies": [
         {
           "Name": "Skitterer",
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario2.jpg",
           "PositionX": 1,
           "PositionY": 0,
           "HPBase": 0,
@@ -14,25 +20,31 @@
     },
     {
       "ScenarioNumber": 3,
-      "Monsters": [
+      "Enemies": [
         {
           "Name": "Skitterer",
-          "Position_X": 1,
-          "Position_Y": 0,
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario3.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
           "HPBase": 0,
           "HPMultiplier": 2
         },
         {
           "Name": "Hive Mother",
-          "Position_X": 2,
-          "Position_Y": 0,
+          "ActionColor": "Green",
+          "ImagePath": "Scenario3.jpg",
+          "PositionX": 2,
+          "PositionY": 0,
           "HPBase": 5,
           "HPMultiplier": 5
         },
         {
           "Name": "Lumin Demon",
-          "Position_X": 3,
-          "Position_Y": 0,
+          "ActionColor": "Red",
+          "ImagePath": "Scenario3.jpg",
+          "PositionX": 3,
+          "PositionY": 0,
           "HPBase": 5,
           "HPMultiplier": 3
         }
@@ -40,39 +52,49 @@
     },
     {
       "ScenarioNumber": 4,
-      "Monsters": [
+      "Enemies": [
         {
           "Name": "Razor Arrow",
-          "Position_X": 1,
-          "Position_Y": 0,
+          "ActionColor": "Red",
+          "ImagePath": "Scenario4.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
           "HPBase": 8,
           "HPMultiplier": 0
         },
         {
           "Name": "Banjahes",
-          "Position_X": 2,
-          "Position_Y": 0,
-          "HPBase": 1,
+          "ActionColor": "Green",
+          "ImagePath": "Scenario4.jpg",
+          "PositionX": 2,
+          "PositionY": 0,
+          "HPBase": 12,
           "HPMultiplier": 0
         },
         {
           "Name": "Razor Thug",
-          "Position_X": 3,
-          "Position_Y": 0,
-          "HPBase": 1,
+          "ActionColor": "Red",
+          "ImagePath": "Scenario4.jpg",
+          "PositionX": 3,
+          "PositionY": 0,
+          "HPBase": 10,
           "HPMultiplier": 0
         },
         {
           "Name": "Galim of Ambergate",
-          "Position_X": 4,
-          "Position_Y": 0,
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario4.jpg",
+          "PositionX": 4,
+          "PositionY": 0,
           "HPBase": 15,
           "HPMultiplier": 0
         },
         {
           "Name": "Vespir",
-          "Position_X": 4,
-          "Position_Y": 0,
+          "ActionColor": "Red",
+          "ImagePath": "Scenario4.jpg",
+          "PositionX": 4,
+          "PositionY": 0,
           "HPBase": 9,
           "HPMultiplier": 0
         }
