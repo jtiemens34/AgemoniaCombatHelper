@@ -1,0 +1,82 @@
+{
+  "Data": [
+    {
+      "ScenarioNumber": 2,
+      "Monsters": [
+        {
+          "Name": "Skitterer",
+          "PositionX": 1,
+          "PositionY": 0,
+          "HPBase": 0,
+          "HPMultiplier": 2
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 3,
+      "Monsters": [
+        {
+          "Name": "Skitterer",
+          "Position_X": 1,
+          "Position_Y": 0,
+          "HPBase": 0,
+          "HPMultiplier": 2
+        },
+        {
+          "Name": "Hive Mother",
+          "Position_X": 2,
+          "Position_Y": 0,
+          "HPBase": 5,
+          "HPMultiplier": 5
+        },
+        {
+          "Name": "Lumin Demon",
+          "Position_X": 3,
+          "Position_Y": 0,
+          "HPBase": 5,
+          "HPMultiplier": 3
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 4,
+      "Monsters": [
+        {
+          "Name": "Razor Arrow",
+          "Position_X": 1,
+          "Position_Y": 0,
+          "HPBase": 8,
+          "HPMultiplier": 0
+        },
+        {
+          "Name": "Banjahes",
+          "Position_X": 2,
+          "Position_Y": 0,
+          "HPBase": 1,
+          "HPMultiplier": 0
+        },
+        {
+          "Name": "Razor Thug",
+          "Position_X": 3,
+          "Position_Y": 0,
+          "HPBase": 1,
+          "HPMultiplier": 0
+        },
+        {
+          "Name": "Galim of Ambergate",
+          "Position_X": 4,
+          "Position_Y": 0,
+          "HPBase": 15,
+          "HPMultiplier": 0
+        },
+        {
+          "Name": "Vespir",
+          "Position_X": 4,
+          "Position_Y": 0,
+          "HPBase": 9,
+          "HPMultiplier": 0
+        }
+      ]
+    }
+  ]
+}
