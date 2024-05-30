@@ -1,7 +1,7 @@
 ﻿@page "/"
 
 <PageTitle>Agemonia Combat Helper</PageTitle>
-@foreach (var entity in controller.TurnOrder)
+@foreach (var entity in controller?.TurnOrder!)
 {
     if (entity is Hero)
     {
@@ -32,23 +32,23 @@
 
 @code{
     [Inject]
-    public CombatController controller { get; set; }
+    public CombatController? controller { get; set; }
     [Inject]
-    public HttpClient Client { get; set; }
+    public HttpClient? Client { get; set; }
 
-    private Modal addHeroModal;
-    private Modal selectScenarioModal;
+    private Modal? addHeroModal;
+    private Modal? selectScenarioModal;
 
     protected override async Task<CombatController> OnInitializedAsync()
     {
-        controller.SetCardsFromJson(await Client.GetFromJsonAsync<InitiativeDeck>("InitiativeCards.json"));
-        controller.SetScenariosFromJson(await Client.GetFromJsonAsync<Scenarios>("Scenarios.json"));
-        return controller;
+        controller?.SetCardsFromJson(await Client?.GetFromJsonAsync<InitiativeDeck>("InitiativeCards.json")!);
+        controller?.SetScenariosFromJson(await Client?.GetFromJsonAsync<Scenarios>("Scenarios.json")!);
+        return controller!;
     }
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
-        if (!firstRender) controller.SetCombatTracker(this);
+        if (!firstRender) controller?.SetCombatTracker(this);
     }
 
     public void Refresh()

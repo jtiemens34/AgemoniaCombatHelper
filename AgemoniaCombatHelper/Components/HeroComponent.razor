@@ -1,7 +1,7 @@
 ﻿@if (Hero is not null) {
     <div class="hero">
         <div class="banner">
-            <ActionColorDisplay IsEnemy="false" Color="@Hero.ActionColor" />
+            <ActionColorDisplay IsEnemy="false" Entity="@Hero" />
             @Hero.HeroClass.ToString()
         </div>
     </div>

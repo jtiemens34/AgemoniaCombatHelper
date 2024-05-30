@@ -3,6 +3,7 @@
 namespace AgemoniaCombatHelper.Models;
 public class CombatController
 {
+    #pragma warning disable IDE0044 // Add readonly modifier
     private List<Hero> Heroes;
     private List<Enemy> Enemies;
     private Scenarios? Scenarios;
@@ -15,7 +16,8 @@ public class CombatController
     public InitiativeCard? ActiveCard { get; private set; }
     private InitiativeDeck? InitiativeCards;
     private InitiativeDeck? Discard;
-    private Random rng = new Random();
+    private Random rng = new();
+    #pragma warning restore IDE0044 // Add readonly modifier
 
     public CombatController()
     {
@@ -29,6 +31,8 @@ public class CombatController
     }
     public void DrawNewCard()
     {
+        if (Discard is null || InitiativeCards is null) return;
+        if (Discard.Data is null || InitiativeCards.Data is null) return;
         // Do we need to shuffle?
         if (Discard.Data.Exists(c => c.Shuffle == true))
         {
@@ -43,14 +47,14 @@ public class CombatController
     }
     private void Shuffle()
     {
+        if (InitiativeCards is null) return;
+        if (InitiativeCards.Data is null) return;
         int n = InitiativeCards.Data.Count;
         while (n > 1)
         {
             n--;
             int k = rng.Next(n + 1);
-            InitiativeCard value = InitiativeCards.Data[k];
-            InitiativeCards.Data[k] = InitiativeCards.Data[n];
-            InitiativeCards.Data[n] = value;
+            (InitiativeCards.Data[n], InitiativeCards.Data[k]) = (InitiativeCards.Data[k], InitiativeCards.Data[n]);
         }
     }
 
@@ -64,13 +68,14 @@ public class CombatController
             foreach (var hero in Heroes) TurnOrder.Add(hero);
             return;
         }
-        // Set enemies attack symbol
+        if (ActiveCard.Actions is null) return;
+        // Set enemy attack symbols
         foreach (var enemy in Enemies)
         {
-            enemy.AttackSymbol = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).FirstOrDefault().AttackSymbol;
+            enemy.AttackSymbol = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().AttackSymbol;
         }
         // Arrange in correct turn order
-        foreach (Action action in ActiveCard.Actions)
+        foreach (Action action in ActiveCard.Actions!)
         {
             if (action.EntityType == EntityType.Hero && Heroes.Any(h => h.ActionColor == action.ActionColor))
             {
@@ -108,21 +113,23 @@ public class CombatController
         return TurnOrder;
     }
 
-    public void SetCardsFromJson(InitiativeDeck deck)
+    public void SetCardsFromJson(InitiativeDeck? deck)
     {
         InitiativeCards = deck;
         Shuffle();
     }
-    public void SetScenariosFromJson(Scenarios scenarios)
+    public void SetScenariosFromJson(Scenarios? scenarios)
     {
         Scenarios = scenarios;
     }
 
     public void LoadScenario(int scenarioNumber)
     {
+        if (Scenarios is null) return;
+        if (Scenarios.Data is null) return;
         Enemies.Clear();
         if (scenarioNumber == 1) return;
-        List<Enemy> enemiesToLoad = Scenarios.Data.Where(s => s.ScenarioNumber == scenarioNumber).First().Enemies;
+        List<Enemy> enemiesToLoad = Scenarios.Data.Where(s => s.ScenarioNumber == scenarioNumber).First().Enemies!;
         foreach (var enemy in enemiesToLoad) AddEnemy(enemy);
     }
 
@@ -132,6 +139,6 @@ public class CombatController
     }
     public void RefreshDisplay()
     {
-        CombatTracker.Refresh();
+        CombatTracker?.Refresh();
     }
 }

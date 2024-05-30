@@ -25,19 +25,19 @@
 
 @code {
     [Inject]
-    public CombatController controller { get; set; }
+    public CombatController? controller { get; set; }
     [SupplyParameterFromForm]
     public Hero? heroToAdd { get; set; }
     [Parameter]
-    public Modal ParentModal { get; set; }
+    public Modal? ParentModal { get; set; }
 
     protected override void OnInitialized() => heroToAdd = new(HeroClass.Venia, 1);
 
     private void Submit()
     {
         if (heroToAdd is null) return;
-        controller.AddHero(heroToAdd);
+        controller?.AddHero(heroToAdd);
         heroToAdd = new(HeroClass.Venia, 1);
-        ParentModal.Close();
+        ParentModal?.Close();
     }
 }

@@ -16,17 +16,17 @@
 </EditForm>
 @code {
     [Inject]
-    public CombatController controller { get; set; }
+    public CombatController? controller { get; set; }
     [SupplyParameterFromForm]
-    public Scenario scenarioToLoad { get; set; }
+    public Scenario? scenarioToLoad { get; set; }
     [Parameter]
-    public Modal ParentModal { get; set; }
+    public Modal? ParentModal { get; set; }
 
     protected override void OnInitialized() => scenarioToLoad ??= new();
 
     private void Submit()
     {
-        controller.LoadScenario(scenarioToLoad.ScenarioNumber);
-        ParentModal.Close();
+        controller?.LoadScenario(scenarioToLoad!.ScenarioNumber);
+        ParentModal?.Close();
     }
 }

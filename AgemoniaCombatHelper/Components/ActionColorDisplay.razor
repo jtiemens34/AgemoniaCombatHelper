@@ -1,20 +1,38 @@
-@if (Color is not null)
+@if (Entity is not null)
 {
-    <img src="@ImageUrl" />
+    <img class="@displayClass" src="@ImageUrl" @onclick="SelectColor" />
 }
 
 @code 
 {
+    [Inject]
+    public CombatController? controller { get; set; }
     [Parameter]
     public bool IsEnemy { get; set; }
     [Parameter]
-    public ActionColor? Color { get; set; }
+    public Entity? Entity { get; set; }
 
+    private string displayClass = "";
     private string? ImageUrl;
 
     protected override void OnParametersSet()
     {
-        switch (Color)
+        SetImageUrl();
+        displayClass = IsEnemy ? "enemy-color-display" : "hero-color-display";
+        base.OnParametersSet();
+    }
+    private void SelectColor()
+    {
+        if (IsEnemy) return;
+        if (Entity is null || controller is null) return;
+        Entity.ActionColor = ActionColor.Red;
+        controller.ArrangeEntities();
+        SetImageUrl();
+    }
+    private void SetImageUrl()
+    {
+        if (Entity is null) return;
+        switch (Entity.ActionColor)
         {
             case ActionColor.Red:
                 if (IsEnemy) ImageUrl = "images/red_enemy.png";
@@ -29,6 +47,6 @@
                 else ImageUrl = "images/green_hero.png";
                 break;
         }
-        base.OnParametersSet();
+        
     }
 }

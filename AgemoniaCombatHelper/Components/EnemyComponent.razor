@@ -1,24 +1,40 @@
 ﻿@if (Enemy is not null) {
     <div class="enemy">
-        <div class="banner">
-            <ActionColorDisplay IsEnemy="true" Color="@Enemy.ActionColor" />
+        <style>
+            .icon {
+                background-image: url("images/scenarios/@Enemy.ImagePath");
+            }
+        </style>
+        <div class="wrapper">
+            <ActionColorDisplay IsEnemy="true" Entity="@Enemy" />
             <div class="enemy-name">@Enemy.Name</div>
-            <br />
-            <div>HP: @Enemy.Health</div>
+            <div style="@iconPosition" class="banner icon" />
         </div>
-        <div style='background-image: url("images/scenarios/@Enemy.ImagePath"); @position' class="@Enemy.AttackSymbol.ToString()" />
+        @if (Enemy.AttackSymbol != AttackSymbol.None)
+        {
+            <div style="@attackPosition" class="attack icon" />
+        }
     </div>
 }
 @code {
     [Parameter]
     public Enemy? Enemy { get; set; }
-    private string position;
+    private string attackPosition = "";
+    private string iconPosition = "";
     protected override void OnParametersSet()
     {
+        // iconPosition = $"background-position: right {}px top {}px";
+        SetAttackPosition();
+        SetIconPosition();
+        base.OnParametersSet();
+    }
+    private void SetAttackPosition()
+    {
+        if (Enemy is null) return;
         int CARD_WIDTH = 810, CARD_HEIGHT = 1415;
         int X_OFFSET = -225, Y_OFFSET = -30;
-        int finalYPosition = Y_OFFSET - (Enemy!.PositionY * CARD_HEIGHT);
-        int finalXPosition = X_OFFSET - (Enemy!.PositionX * CARD_WIDTH);
+        int finalYPosition = Y_OFFSET - (Enemy.PositionY * CARD_HEIGHT);
+        int finalXPosition = X_OFFSET - (Enemy.PositionX * CARD_WIDTH);
         // Also include calculations for shifting for Attack Symbol
         switch (Enemy!.AttackSymbol)
         {
@@ -26,7 +42,17 @@
             case AttackSymbol.HalfOpen: finalXPosition -= 200; break;
             case AttackSymbol.Squint: finalXPosition -= 400; break;
         }
-        position = $"background-position: right {finalYPosition}px top {finalXPosition}px";
-        base.OnParametersSet();
+        attackPosition = $"background-position: right {finalYPosition}px top {finalXPosition}px";
+    }
+    private void SetIconPosition()
+    {
+        //554 594
+        //327 367
+        if (Enemy is null) return;
+        int CARD_WIDTH = 267, CARD_HEIGHT = 0;
+        int X_OFFSET = -60, Y_OFFSET = -280;
+        int finalYPosition = Y_OFFSET - (Enemy.PositionY * CARD_HEIGHT);
+        int finalXPosition = X_OFFSET - (Enemy.PositionX * CARD_WIDTH);
+        iconPosition = $"background-position: right {finalYPosition}px top {finalXPosition}px";
     }
 }
