@@ -1,6 +1,6 @@
 @if (Entity is not null)
 {
-    <img class="@displayClass" src="@ImageUrl" @onclick="SelectColor" />
+    <img class="@displayClass" src="@ImageUrl" @onclick:stopPropagation="true" @onclick="SelectColor" />
 }
 
 @code 
@@ -27,6 +27,7 @@
         if (Entity is null || controller is null) return;
         Entity.ActionColor = ActionColor.Red;
         controller.ArrangeEntities();
+        controller.RefreshDisplay();
         SetImageUrl();
     }
     private void SetImageUrl()

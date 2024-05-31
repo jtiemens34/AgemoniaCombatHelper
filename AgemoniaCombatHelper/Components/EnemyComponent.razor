@@ -12,15 +12,19 @@
         </div>
         @if (Enemy.AttackSymbol != AttackSymbol.None)
         {
-            <div style="@attackPosition" class="attack icon" />
+            <div style="@attackPosition @width" class="attack icon" />
         }
     </div>
 }
 @code {
+    [Inject]
+    public CombatController? controller { get; set; }
     [Parameter]
     public Enemy? Enemy { get; set; }
+
     private string attackPosition = "";
     private string iconPosition = "";
+    private string width = "";
     protected override void OnParametersSet()
     {
         // iconPosition = $"background-position: right {}px top {}px";
@@ -42,7 +46,16 @@
             case AttackSymbol.HalfOpen: finalXPosition -= 200; break;
             case AttackSymbol.Squint: finalXPosition -= 400; break;
         }
-        attackPosition = $"background-position: right {finalYPosition}px top {finalXPosition}px";
+        if (Enemy.Modifier == Modifier.None)
+        {
+            width = "width: 550px;";
+            finalYPosition -= 240;
+        }
+        else if (Enemy.Modifier == Modifier.Horns || Enemy.Modifier == Modifier.SnakeAndHorns)
+        {
+            width = "width: 790px;";
+        }
+        attackPosition = $"background-position: right {finalYPosition}px top {finalXPosition}px;";
     }
     private void SetIconPosition()
     {

@@ -10,6 +10,7 @@ public class Enemy : Entity
     public int HPBase { get; set; }
     public int HPMultiplier { get; set; }
     public AttackSymbol AttackSymbol { get; set; } = AttackSymbol.None;
+    public Modifier Modifier { get; set; } = Modifier.None;
     public void SetInitialHP(int playerCount)
     {
         Health = HPMultiplier > 0 ? playerCount * HPMultiplier + HPBase : HPBase;

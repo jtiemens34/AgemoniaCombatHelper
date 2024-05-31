@@ -1,18 +1,49 @@
 ﻿@if (Hero is not null) {
-    <div class="hero">
+    <div class="hero" @onclick="() => heroModal?.Open()">
         <div class="banner">
             <ActionColorDisplay IsEnemy="false" Entity="@Hero" />
             @Hero.HeroClass.ToString()
-            @if (controller?.ActiveCard?.Actions?.Where(c => c.ActionColor == Hero.ActionColor && c.EntityType == EntityType.Hero).First().Modifier == Modifier.ExtraManeuver)
-            {
+        </div>
+        @if (HasExtraManeuver)
+        {
+            <div>
                 <img src="images/extra-maneuver.png" />
-            }
+            </div>
+        }
+        <div>
+            Stamina: @Hero.Stamina
+        </div>
+        <div>
+            Spent Stamina: @Hero.SpentStamina
+        </div>
+        <div>
+            Damage: @Hero.Damage
         </div>
     </div>
+    <Modal @ref="@heroModal">
+        <Title>Editing @Hero.HeroClass.ToString()</Title>
+        <Body>
+            <div>
+                <button class="btn btn-secondary" @onclick="() => Hero.SpendStamina(1)">-1</button>
+                Stamina: @Hero.Stamina
+                <button class="btn btn-secondary" @onclick="() => Hero.RecoverStamina(1)">+1</button>
+            </div>
+            <div>
+                Spent Stamina: @Hero.SpentStamina
+            </div>
+            <div>
+                <button class="btn btn-secondary" @onclick="() => Hero.TakeDamage(1)">-1</button>
+                Damage: @Hero.Damage
+                <button class="btn btn-secondary" @onclick="() => Hero.HealDamage(1)">+1</button>
+            </div>
+        </Body>
+    </Modal>
 }
 @code {
-    [Inject]
-    public CombatController? controller { get; set; }
     [Parameter]
     public Hero? Hero { get; set; }
+    [Parameter]
+    public bool HasExtraManeuver { get; set; }
+
+    private Modal? heroModal;
 }

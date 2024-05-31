@@ -69,10 +69,11 @@ public class CombatController
             return;
         }
         if (ActiveCard.Actions is null) return;
-        // Set enemy attack symbols
+        // Set enemy attack symbols and modifiers
         foreach (var enemy in Enemies)
         {
             enemy.AttackSymbol = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().AttackSymbol;
+            enemy.Modifier = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().Modifier;
         }
         // Arrange in correct turn order
         foreach (Action action in ActiveCard.Actions!)
