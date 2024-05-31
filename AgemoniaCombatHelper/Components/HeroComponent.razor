@@ -3,10 +3,16 @@
         <div class="banner">
             <ActionColorDisplay IsEnemy="false" Entity="@Hero" />
             @Hero.HeroClass.ToString()
+            @if (controller?.ActiveCard?.Actions?.Where(c => c.ActionColor == Hero.ActionColor && c.EntityType == EntityType.Hero).First().Modifier == Modifier.ExtraManeuver)
+            {
+                <img src="images/extra-maneuver.png" />
+            }
         </div>
     </div>
 }
 @code {
+    [Inject]
+    public CombatController? controller { get; set; }
     [Parameter]
-    public Models.Hero? Hero { get; set; }
+    public Hero? Hero { get; set; }
 }
