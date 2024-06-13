@@ -30,8 +30,8 @@ public class CombatControllerTests
 
         List<Entity> TurnOrder = _controller.GetEntities();
 
-        Assert.True(TurnOrder[1].Equals(_redPlayer));
-        Assert.True(TurnOrder[3].Equals(_bluePlayer));
-        Assert.True(TurnOrder[4].Equals(_greenPlayer));
+        Assert.True(TurnOrder[0].Equals(_redPlayer));
+        Assert.True(TurnOrder[1].Equals(_bluePlayer));
+        Assert.True(TurnOrder[2].Equals(_greenPlayer));
     }
 }
