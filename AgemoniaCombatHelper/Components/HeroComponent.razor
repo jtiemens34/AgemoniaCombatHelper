@@ -10,14 +10,17 @@
                 <img src="images/extra-maneuver.png" />
             </div>
         }
-        <div>
-            Stamina: @Hero.Stamina
+        <div class="stat-wrapper">
+            <img src="images/stamina.png" />
+            <span>@Hero.Stamina</span>
         </div>
-        <div>
-            Spent Stamina: @Hero.SpentStamina
+        <div class="stat-wrapper">
+            <img src="images/spent_stamina.png" />
+            <span>@Hero.SpentStamina</span>
         </div>
-        <div>
-            Damage: @Hero.Damage
+        <div class="stat-wrapper">
+            <img src="images/health.png" />
+            <span>@Hero.Damage</span>
         </div>
     </div>
     <Modal @ref="@heroModal">
