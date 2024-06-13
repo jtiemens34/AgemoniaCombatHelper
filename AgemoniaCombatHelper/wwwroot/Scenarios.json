@@ -99,6 +99,130 @@
           "HPMultiplier": 0
         }
       ]
+    },
+    {
+      "ScenarioNumber": 5,
+      "Enemies": [
+        {
+          "Name": "Green Zlohian",
+          "ActionColor": "Green",
+          "ImagePath": "Scenario5.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
+          "HPBase": 6,
+          "HPMultiplier": 3
+        },
+        {
+          "Name": "Ustrig",
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario5.jpg",
+          "PositionX": 2,
+          "PositionY": 0,
+          "HPBase": 10,
+          "HPMultiplier": 5
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 6,
+      "Enemies": [
+        {
+          "Name": "Revenant",
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario6.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
+          "HPBase": 15,
+          "HPMultiplier": 0
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 7,
+      "Enemies": [
+        {
+          "Name": "Skitterer",
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario7.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
+          "HPBase": 3,
+          "HPMultiplier": 2
+        },
+        {
+          "Name": "Hive Mother",
+          "ActionColor": "Green",
+          "ImagePath": "Scenario7.jpg",
+          "PositionX": 2,
+          "PositionY": 0,
+          "HPBase": 10,
+          "HPMultiplier": 5
+        },
+        {
+          "Name": "Arcane Golem",
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario7.jpg",
+          "PositionX": 3,
+          "PositionY": 0,
+          "HPBase": -1,
+          "HPMultiplier": 0
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 8,
+      "Enemies": [
+        {
+          "Name": "Lumin Demon",
+          "ActionColor": "Red",
+          "ImagePath": "Scenario8.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
+          "HPBase": 5,
+          "HPMultiplier": 3
+        },
+        {
+          "Name": "Lugat Demon",
+          "ActionColor": "Blue",
+          "ImagePath": "Scenario8.jpg",
+          "PositionX": 2,
+          "PositionY": 0,
+          "HPBase": 20,
+          "HPMultiplier": 0
+        },
+        {
+          "Name": "Graznak",
+          "ActionColor": "Green",
+          "ImagePath": "Scenario8.jpg",
+          "PositionX": 3,
+          "PositionY": 0,
+          "HPBase": 20,
+          "HPMultiplier": 10
+        },
+        {
+          "Name": "Savage Togrel",
+          "ActionColor": "Green",
+          "ImagePath": "Scenario8.jpg",
+          "PositionX": 4,
+          "PositionY": 0,
+          "HPBase": 5,
+          "HPMultiplier": 3
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 9,
+      "Enemies": [
+        {
+          "Name": "Benaethid",
+          "ActionColor": "Green",
+          "ImagePath": "Scenario9.jpg",
+          "PositionX": 1,
+          "PositionY": 0,
+          "HPBase": 20,
+          "HPMultiplier": 10
+        }
+      ]
     }
   ]
 }
