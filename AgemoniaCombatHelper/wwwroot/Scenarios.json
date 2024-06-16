@@ -1,52 +1,208 @@
 {
+  "$schema": "file:/C:/Users/zomgi/source/repos/AgemoniaCombatHelper/AgemoniaCombatHelper/ScenarioSchema.json",
   "Data": [
     {
       "ScenarioNumber": 1,
       "Enemies": []
     },
     {
-      "ScenarioNumber": 2,
       "Enemies": [
         {
-          "Name": "Skitterer",
           "ActionColor": "Blue",
-          "ImagePath": "Scenario2.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
+          "Name": "Skitterer",
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "Movement": 1,
+              "HornModifier": {},
+              "Name": "Bite",
+              "Text": "%HPDamage% %Might:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "Movement": 2,
+              "HornModifier": {},
+              "Name": "Leg stab",
+              "Text": "%HPDamage% %Agility:2%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "Movement": 2,
+              "HornModifier": {},
+              "Name": "Snooping around",
+              "Text": "%Nothing%",
+              "Type": "None"
+            }
+          ],
+          "Drops": "%Nothing%",
           "HPBase": 0,
-          "HPMultiplier": 2
+          "HPMultiplier": 2,
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {},
+          "Tags": ["Beast"]
         }
-      ]
+      ],
+      "ScenarioNumber": 2
     },
     {
       "ScenarioNumber": 3,
       "Enemies": [
         {
-          "Name": "Skitterer",
           "ActionColor": "Blue",
-          "ImagePath": "Scenario3.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 1,
+              "Name": "Bite",
+              "Text": "%HPDamage% %Might:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Leg stab",
+              "Text": "%HPDamage% %Agility:2%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+2 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Snooping Around",
+              "Text": "%Nothing%",
+              "Type": "None"
+            }
+          ],
+          "Drops": "%Nothing",
           "HPBase": 0,
-          "HPMultiplier": 2
+          "HPMultiplier": 2,
+          "Name": "Skitterer",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Regenerate",
+            "Text": "%HPHeal% 3",
+            "Type": "None"
+          },
+          "Tags": ["Beast"]
         },
         {
-          "Name": "Hive Mother",
           "ActionColor": "Green",
-          "ImagePath": "Scenario3.jpg",
-          "PositionX": 2,
-          "PositionY": 0,
+          "Armor": 1,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Reach",
+                "Text": "%Range% +1"
+              },
+              "Movement": 2,
+              "Name": "Web",
+              "Text": "%Range:2% %Held%",
+              "Type": "Magic"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 3,
+              "Name": "Stomp",
+              "Text": "%HPDamage% %Agility:4%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Venom",
+                "Text": "+ %Weakened%"
+              },
+              "Movement": 2,
+              "Name": "Spike",
+              "Text": "%HPDamage% %Might:4%",
+              "Type": "Melee"
+            }
+          ],
+          "Drops": "Agura Crystal token",
           "HPBase": 5,
-          "HPMultiplier": 5
+          "HPMultiplier": 5,
+          "Name": "Hive Mother",
+          "RetaliateAmount": 2,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Birth",
+            "Text": "Spawn 1 skitterer",
+            "Type": "None"
+          },
+          "Tags": ["Beast", "Large"]
         },
         {
-          "Name": "Lumin Demon",
           "ActionColor": "Red",
-          "ImagePath": "Scenario3.jpg",
-          "PositionX": 3,
-          "PositionY": 0,
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Rend",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 2,
+              "Name": "Pincer",
+              "Text": "%HPDamage% %Might:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Pierce",
+                "Text": "%ReactiveCheckPlus:1%"
+              },
+              "Movement": 3,
+              "Name": "Tail Slice",
+              "Text": "%HPDamage% %Agility:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Glare",
+              "Text": "%Range:2% %HPDamage% %Willpower:3%",
+              "Type": "Magic"
+            }
+          ],
+          "Drops": "Blood Crystal token",
           "HPBase": 5,
-          "HPMultiplier": 3
+          "HPMultiplier": 3,
+          "Name": "Lumin Demon",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Bite",
+            "Text": "%HPDamage% %Might:2%",
+            "Type": "Melee"
+          },
+          "Tags": ["Aox"]
         }
       ]
     },
@@ -54,173 +210,257 @@
       "ScenarioNumber": 4,
       "Enemies": [
         {
-          "Name": "Razor Arrow",
-          "ActionColor": "Red",
-          "ImagePath": "Scenario4.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
+          "ActionColor": "Blue",
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Focus",
+                "Text": "+ %Slowed%"
+              },
+              "Movement": 1,
+              "Name": "Aimed Shot",
+              "Text": "%Range:3% %HPDamage% %Might:4%",
+              "Type": "Ranged"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Pierce",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 2,
+              "Name": "Arrow",
+              "Text": "%Range:2% %HPDamage% %Agility:3%",
+              "Type": "Ranged"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Cut",
+                "Text": "%ReactiveCheckPlus:1%"
+              },
+              "Movement": 1,
+              "Name": "Knife & Heal",
+              "Text": "%HPDamage% %Might:2%, %HPHeal% 3",
+              "Type": "Melee"
+            }
+          ],
+          "Drops": "1 %Star%",
           "HPBase": 8,
-          "HPMultiplier": 0
+          "HPMultiplier": 0,
+          "Name": "Razor Arrow",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 2,
+          "SnakeModifier": {
+            "Name": "Ricochet",
+            "Text": "%ReactiveCheckPlus:1% to the Attack this turn",
+            "Type": "None"
+          },
+          "Tags": ["Shroud Archer"]
         },
         {
-          "Name": "Banjahes",
           "ActionColor": "Green",
-          "ImagePath": "Scenario4.jpg",
-          "PositionX": 2,
-          "PositionY": 0,
+          "Armor": 1,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Poison Knife",
+              "Text": "%HPDamage% %Might:3% + %Weakened%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Pierce",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 2,
+              "Name": "Targeted Shot",
+              "Text": "%Range:3% %HPDamage% %Agility:4%",
+              "Type": "Ranged"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Bandage",
+                "Text": "%HPHeal% 5"
+              },
+              "Movement": 1,
+              "Name": "Flame Arrow",
+              "Text": "%Range:3% %Radius:0% %HPDamage% %Agility:4%",
+              "Type": "Ranged"
+            }
+          ],
+          "Drops": "3 %Star%",
           "HPBase": 12,
-          "HPMultiplier": 0
+          "HPMultiplier": 0,
+          "Name": "Banjahes",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 2,
+          "SnakeModifier": {
+            "Name": "Nerve Bomb",
+            "Text": "%Radius:1% %AgilityAction:5% Fail >> %Confused%",
+            "Type": "None"
+          },
+          "Tags": ["Shroud Elite Archer"]
         },
         {
+          "ActionColor": "Red",
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Sever",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 2,
+              "Name": "Slice",
+              "Text": "%HPDamage% %Might:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 3,
+              "Name": "Slashing Blade",
+              "Text": "%HPDamage% %Agility:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Bandage",
+                "Text": "%HPHeal% 3"
+              },
+              "Movement": 2,
+              "Name": "Defensive Blow",
+              "Text": "%HPDamage% %Might:3% + %Slowed%",
+              "Type": "Melee"
+            }
+          ],
+          "Drops": "1 %Star%",
+          "HPBase": 10,
+          "HPMultiplier": 0,
           "Name": "Razor Thug",
-          "ActionColor": "Red",
-          "ImagePath": "Scenario4.jpg",
-          "PositionX": 3,
-          "PositionY": 0,
-          "HPBase": 10,
-          "HPMultiplier": 0
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Dual Wielder",
+            "Text": "%ReactiveCheckPlus:1% to the Attack this turn"
+          },
+          "Tags": ["Shroud Bruiser"]
         },
         {
+          "ActionColor": "Blue",
+          "Armor": 1,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Stagger",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 2,
+              "Name": "Mighty Blow",
+              "Text": "%HPDamage% %Might:4%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Impact",
+                "Text": "Push 1"
+              },
+              "Movement": 3,
+              "Name": "Blade Blitz",
+              "Text": "%HPDamage% %Agility:4%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Poison Knife",
+              "Text": "%HPDamage% %Might:3% + %Weakened%",
+              "Type": "Melee"
+            }
+          ],
+          "Drops": "3 %Star%",
+          "HPBase": 15,
+          "HPMultiplier": 0,
           "Name": "Galim of Ambergate",
-          "ActionColor": "Blue",
-          "ImagePath": "Scenario4.jpg",
-          "PositionX": 4,
-          "PositionY": 0,
-          "HPBase": 15,
-          "HPMultiplier": 0
+          "RetaliateAmount": 2,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Bandage",
+            "Text": "%HPHeal% 5"
+          },
+          "Tags": ["Shroud Elite Bruiser"]
         },
         {
-          "Name": "Vespir",
           "ActionColor": "Red",
-          "ImagePath": "Scenario4.jpg",
-          "PositionX": 4,
-          "PositionY": 0,
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Rend",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 3,
+              "Name": "Razor Claws",
+              "Text": "%HPDamage% %Might:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Spit",
+                "Text": "+ %Weakened%"
+              },
+              "Movement": 3,
+              "Name": "Bite",
+              "Text": "%HPDamage% %Agility:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Heal",
+                "Text": "%HPHeal% 3"
+              },
+              "Movement": 2,
+              "Name": "Shriek",
+              "Text": "%Radius:2% %Slowed%",
+              "Type": "None"
+            }
+          ],
+          "Drops": "%Nothing%",
           "HPBase": 9,
-          "HPMultiplier": 0
-        }
-      ]
-    },
-    {
-      "ScenarioNumber": 5,
-      "Enemies": [
-        {
-          "Name": "Green Zlohian",
-          "ActionColor": "Green",
-          "ImagePath": "Scenario5.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
-          "HPBase": 6,
-          "HPMultiplier": 3
-        },
-        {
-          "Name": "Ustrig",
-          "ActionColor": "Blue",
-          "ImagePath": "Scenario5.jpg",
-          "PositionX": 2,
-          "PositionY": 0,
-          "HPBase": 10,
-          "HPMultiplier": 5
-        }
-      ]
-    },
-    {
-      "ScenarioNumber": 6,
-      "Enemies": [
-        {
-          "Name": "Revenant",
-          "ActionColor": "Blue",
-          "ImagePath": "Scenario6.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
-          "HPBase": 15,
-          "HPMultiplier": 0
-        }
-      ]
-    },
-    {
-      "ScenarioNumber": 7,
-      "Enemies": [
-        {
-          "Name": "Skitterer",
-          "ActionColor": "Blue",
-          "ImagePath": "Scenario7.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
-          "HPBase": 3,
-          "HPMultiplier": 2
-        },
-        {
-          "Name": "Hive Mother",
-          "ActionColor": "Green",
-          "ImagePath": "Scenario7.jpg",
-          "PositionX": 2,
-          "PositionY": 0,
-          "HPBase": 10,
-          "HPMultiplier": 5
-        },
-        {
-          "Name": "Arcane Golem",
-          "ActionColor": "Blue",
-          "ImagePath": "Scenario7.jpg",
-          "PositionX": 3,
-          "PositionY": 0,
-          "HPBase": -1,
-          "HPMultiplier": 0
-        }
-      ]
-    },
-    {
-      "ScenarioNumber": 8,
-      "Enemies": [
-        {
-          "Name": "Lumin Demon",
-          "ActionColor": "Red",
-          "ImagePath": "Scenario8.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
-          "HPBase": 5,
-          "HPMultiplier": 3
-        },
-        {
-          "Name": "Lugat Demon",
-          "ActionColor": "Blue",
-          "ImagePath": "Scenario8.jpg",
-          "PositionX": 2,
-          "PositionY": 0,
-          "HPBase": 20,
-          "HPMultiplier": 0
-        },
-        {
-          "Name": "Graznak",
-          "ActionColor": "Green",
-          "ImagePath": "Scenario8.jpg",
-          "PositionX": 3,
-          "PositionY": 0,
-          "HPBase": 20,
-          "HPMultiplier": 10
-        },
-        {
-          "Name": "Savage Togrel",
-          "ActionColor": "Green",
-          "ImagePath": "Scenario8.jpg",
-          "PositionX": 4,
-          "PositionY": 0,
-          "HPBase": 5,
-          "HPMultiplier": 3
-        }
-      ]
-    },
-    {
-      "ScenarioNumber": 9,
-      "Enemies": [
-        {
-          "Name": "Benaethid",
-          "ActionColor": "Green",
-          "ImagePath": "Scenario9.jpg",
-          "PositionX": 1,
-          "PositionY": 0,
-          "HPBase": 20,
-          "HPMultiplier": 10
+          "HPMultiplier": 0,
+          "Name": "Vespir",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Charge",
+            "Text": "Fly",
+            "Type": "None"
+          },
+          "Tags": ["Beast"]
         }
       ]
     }

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "title": "Scenario list",
+  "description": "A list of all the data required to recreate all scenarios in Agemonia Combat Helper",
+  "type": "object",
+  "properties": {
+    "Data": {
+      "type": "array",
+      "description": "Array to be parsed into Scenario object instances by the JSON Deserializer",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ScenarioNumber": {
+            "type": "integer",
+            "description": "The number of the scenario"
+          },
+          "Enemies": {
+            "type": "array",
+            "description": "An array of the enemies present in the scenario",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ActionColor": {
+                  "enum": [ "Red", "Blue", "Green" ],
+                  "description": "The action color that the enemy acts during"
+                },
+                "HPBase": {
+                  "type": "integer",
+                  "description": "The flat value added to an enemy's HP"
+                },
+                "HPMultiplier": {
+                  "type": "integer",
+                  "description": "The amount of HP added to an enemy per player"
+                },
+                "RetaliateAmount": {
+                  "type": "integer",
+                  "description": "The amount of damage a player will suffer upon exiting the range of influence of this enemy"
+                },
+                "RetaliateRange": {
+                  "type": "integer",
+                  "description": "The amount of tiles of range of retaliation the enemy has"
+                },
+                "Tags": {
+                  "type": "array",
+                  "description": "The enemy type tags this enemy possesses",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "Name": {
+                  "type": "string",
+                  "description": "The name of the enemy"
+                },
+                "Armor": {
+                  "type": "integer",
+                  "description": "The amount of damage that will be reduced from all attacks this enemy receives"
+                },
+                "SnakeModifier": {
+                  "type": "object",
+                  "description": "The action this enemy will perform if its corresponding action color on the initiative for this card is associated with the snake modifier",
+                  "properties": {
+                    "Name": {
+                      "type": "string",
+                      "description": "The name of the modifier attack"
+                    },
+                    "Text": {
+                      "type": "string",
+                      "description": "The content of the modifier attack"
+                    }
+                  }
+                },
+                "Drops": {
+                  "type": "string",
+                  "description": "What the enemy will drop when defeated"
+                },
+                "Attacks": {
+                  "type": "array",
+                  "description": "The various attacks the enemy will perform depending on which attack symbol was drawn for this turn",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "AttackSymbol": {
+                        "enum": [ "FullyOpen", "HalfOpen", "Squint" ],
+                        "description": "The attack symbol this attack is associated with"
+                      },
+                      "Name": {
+                        "type": "string",
+                        "description": "The name of the attack"
+                      },
+                      "Type": {
+                        "enum": [ "Melee", "Ranged", "Magic", "None" ],
+                        "description": "The type of the attack"
+                      },
+                      "Movement": {
+                        "type": "integer",
+                        "description": "The amount of tiles this enemy will move before performing this attack"
+                      },
+                      "Text": {
+                        "type": "string",
+                        "description": "The content of the attack"
+                      },
+                      "HornModifier": {
+                        "type": "object",
+                        "description": "The action this enemy will perform after the attack if the horn modifier was drawn this turn",
+                        "properties": {
+                          "Name": {
+                            "type": "string",
+                            "description": "The name of the modifier attack"
+                          },
+                          "Text": {
+                            "type": "string",
+                            "description": "The content of the modifier attack"
+                          },
+                          "Type": {
+                            "enum": [ "Melee", "Ranged", "Magic", "None" ],
+                            "description": "The type of the attack"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
