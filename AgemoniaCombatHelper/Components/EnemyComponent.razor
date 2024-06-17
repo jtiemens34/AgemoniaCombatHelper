@@ -1,71 +1,34 @@
 ﻿@if (Enemy is not null) {
     <div class="enemy">
-        <style>
-            .icon {
-                background-image: url("images/scenarios/@Enemy.ImagePath");
-            }
-        </style>
         <div class="wrapper">
             <ActionColorDisplay IsEnemy="true" Entity="@Enemy" />
             <div class="enemy-name">@Enemy.Name</div>
-            <div style="@iconPosition" class="banner icon" />
+            <!-- Icon -->
         </div>
-        @if (Enemy.AttackSymbol != AttackSymbol.None)
+        @if (Enemy.SelectedAttackSymbol != AttackSymbol.None)
         {
-            <div style="@attackPosition @width" class="attack icon" />
+            <!-- Attack Display -->
+        }
+        <button class="btn btn-primary" @onclick="AddEnemy">+</button>
+        @foreach (var enemyInstance in enemyInstances)
+        {
+            <EnemyInstanceComponent Instance="@enemyInstance" />
         }
     </div>
 }
 @code {
+    // TODO: Refactor to remove SetAttack and Icon Position methods
+    // TODO: Add raw text display for enemy instructions
+    // TODO: Figure out how to parse the % icons within the Text property
     [Inject]
     public CombatController? controller { get; set; }
     [Parameter]
     public Enemy? Enemy { get; set; }
 
-    private string attackPosition = "";
-    private string iconPosition = "";
-    private string width = "";
-    protected override void OnParametersSet()
+    private List<EnemyInstance> enemyInstances = new();
+
+    private void AddEnemy()
     {
-        // iconPosition = $"background-position: right {}px top {}px";
-        SetAttackPosition();
-        SetIconPosition();
-        base.OnParametersSet();
-    }
-    private void SetAttackPosition()
-    {
-        if (Enemy is null) return;
-        int CARD_WIDTH = 810, CARD_HEIGHT = 1415;
-        int X_OFFSET = -225, Y_OFFSET = -30;
-        int finalYPosition = Y_OFFSET - (Enemy.PositionY * CARD_HEIGHT);
-        int finalXPosition = X_OFFSET - (Enemy.PositionX * CARD_WIDTH);
-        // Also include calculations for shifting for Attack Symbol
-        switch (Enemy!.AttackSymbol)
-        {
-            case AttackSymbol.FullyOpen: break;
-            case AttackSymbol.HalfOpen: finalXPosition -= 200; break;
-            case AttackSymbol.Squint: finalXPosition -= 400; break;
-        }
-        if (Enemy.Modifier == Modifier.None)
-        {
-            width = "width: 550px;";
-            finalYPosition -= 240;
-        }
-        else if (Enemy.Modifier == Modifier.Horns || Enemy.Modifier == Modifier.SnakeAndHorns)
-        {
-            width = "width: 790px;";
-        }
-        attackPosition = $"background-position: right {finalYPosition}px top {finalXPosition}px;";
-    }
-    private void SetIconPosition()
-    {
-        //554 594
-        //327 367
-        if (Enemy is null) return;
-        int CARD_WIDTH = 267, CARD_HEIGHT = 0;
-        int X_OFFSET = -60, Y_OFFSET = -280;
-        int finalYPosition = Y_OFFSET - (Enemy.PositionY * CARD_HEIGHT);
-        int finalXPosition = X_OFFSET - (Enemy.PositionX * CARD_WIDTH);
-        iconPosition = $"background-position: right {finalYPosition}px top {finalXPosition}px";
+        enemyInstances.Add(new EnemyInstance(controller!.GetPlayerCount(), Enemy!));
     }
 }

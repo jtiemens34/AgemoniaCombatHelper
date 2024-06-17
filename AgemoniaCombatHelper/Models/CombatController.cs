@@ -72,7 +72,7 @@ public class CombatController
         // Set enemy attack symbols and modifiers
         foreach (var enemy in Enemies)
         {
-            enemy.AttackSymbol = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().AttackSymbol;
+            enemy.SelectedAttackSymbol = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().AttackSymbol;
             enemy.Modifier = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().Modifier;
         }
         // Arrange in correct turn order
@@ -96,17 +96,19 @@ public class CombatController
     public void AddHero(Hero hero)
     {
         Heroes.Add(hero);
-        foreach (var enemy in Enemies) enemy.SetInitialHP(Heroes.Count);
         ArrangeEntities();
         CombatTracker?.Refresh();
     }
 
     public void AddEnemy(Enemy enemy)
     {
-        enemy.SetInitialHP(Heroes.Count);
         Enemies.Add(enemy);
         ArrangeEntities();
         CombatTracker?.Refresh();
+    }
+    public int GetPlayerCount()
+    {
+        return Heroes.Count;
     }
 
     public List<Entity> GetEntities()
