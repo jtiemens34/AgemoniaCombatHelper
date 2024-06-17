@@ -1,4 +1,7 @@
 ﻿using AgemoniaCombatHelper.Models;
+using AgemoniaCombatHelper.Models.Entities;
+using AgemoniaCombatHelper.Models.Entities.Hero;
+using AgemoniaCombatHelper.Models.Initiative;
 using System.Text.Json;
 
 namespace AgemoniaCombatHelperTests;

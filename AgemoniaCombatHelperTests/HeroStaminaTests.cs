@@ -1,4 +1,4 @@
-﻿using AgemoniaCombatHelper.Models;
+﻿using AgemoniaCombatHelper.Models.Entities.Hero;
 
 namespace AgemoniaCombatHelperTests;
 public class HeroStaminaTests

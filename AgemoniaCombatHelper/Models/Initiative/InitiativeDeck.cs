@@ -1,4 +1,4 @@
-﻿namespace AgemoniaCombatHelper.Models;
+﻿namespace AgemoniaCombatHelper.Models.Initiative;
 
 public class InitiativeDeck
 {

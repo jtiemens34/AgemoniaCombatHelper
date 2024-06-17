@@ -1,4 +1,4 @@
-﻿namespace AgemoniaCombatHelper.Models;
+﻿namespace AgemoniaCombatHelper.Models.Entities.Hero;
 
 public enum HeroClass
 {

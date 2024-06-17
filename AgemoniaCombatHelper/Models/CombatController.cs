@@ -1,4 +1,9 @@
-﻿using AgemoniaCombatHelper.Pages;
+﻿using AgemoniaCombatHelper.Models.Entities.Enemy;
+using AgemoniaCombatHelper.Models.Entities.Hero;
+using AgemoniaCombatHelper.Models.Entities;
+using AgemoniaCombatHelper.Models.Initiative;
+using AgemoniaCombatHelper.Models.Scenario;
+using AgemoniaCombatHelper.Pages;
 
 namespace AgemoniaCombatHelper.Models;
 public class CombatController
@@ -76,7 +81,7 @@ public class CombatController
             enemy.Modifier = ActiveCard.Actions.Where(a => a.ActionColor == enemy.ActionColor && a.EntityType == EntityType.Enemy).First().Modifier;
         }
         // Arrange in correct turn order
-        foreach (Action action in ActiveCard.Actions!)
+        foreach (Initiative.Action action in ActiveCard.Actions!)
         {
             if (action.EntityType == EntityType.Hero && Heroes.Any(h => h.ActionColor == action.ActionColor))
             {

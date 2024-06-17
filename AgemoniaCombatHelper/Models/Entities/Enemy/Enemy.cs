@@ -1,4 +1,6 @@
-﻿namespace AgemoniaCombatHelper.Models;
+﻿using AgemoniaCombatHelper.Models.Initiative;
+
+namespace AgemoniaCombatHelper.Models.Entities.Enemy;
 
 public class Enemy : Entity
 {
