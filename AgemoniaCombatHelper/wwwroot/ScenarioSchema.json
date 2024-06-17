@@ -66,6 +66,10 @@
                     "Text": {
                       "type": "string",
                       "description": "The content of the modifier attack"
+                    },
+                    "Type": {
+                      "enum": [ "Magic", "Melee", "Ranged", "None" ],
+                      "description": "The type of attack the snake modifier is"
                     }
                   }
                 },
@@ -110,10 +114,6 @@
                           "Text": {
                             "type": "string",
                             "description": "The content of the modifier attack"
-                          },
-                          "Type": {
-                            "enum": [ "Melee", "Ranged", "Magic", "None" ],
-                            "description": "The type of the attack"
                           }
                         }
                       }

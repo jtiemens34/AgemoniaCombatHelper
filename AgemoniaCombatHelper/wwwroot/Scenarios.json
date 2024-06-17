@@ -1,5 +1,5 @@
 {
-  "$schema": "file:/C:/Users/zomgi/source/repos/AgemoniaCombatHelper/AgemoniaCombatHelper/ScenarioSchema.json",
+  "$schema": "ScenarioSchema.json",
   "Data": [
     {
       "ScenarioNumber": 1,
@@ -461,6 +461,312 @@
             "Type": "None"
           },
           "Tags": ["Beast"]
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 5,
+      "Enemies": [
+        {
+          "ActionColor": "Green",
+          "Armor": 1,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1* %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Acidic Touch",
+              "Text": "%HPDamage% %Might:4% + %Bleeding%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Burn",
+                "Text": "%ReactiveCheckPlus:1%"
+              },
+              "Movement": 1,
+              "Name": "Corrosion",
+              "Text": "%Radius:1% %HPDamage% %Agility:3%",
+              "Type": "Magic"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Acid",
+                "Text": "2 %HPDamage%"
+              },
+              "Movement": 1,
+              "Name": "Paralytic Spit",
+              "Text": "%Range:2% %WillpowerCheck:5% Fail >> %Held%",
+              "Type": "Magic"
+            }
+          ],
+          "Drops": "Scrap Metal token",
+          "HPBase": 6,
+          "HPMultiplier": 3,
+          "Name": "Green Zlohian",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Regenerate",
+            "Text": "%HPHeal% to Full Health"
+          },
+          "Tags": ["Plant"]
+        },
+        {
+          "ActionColor": "Blue",
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Slimy Rush",
+              "Text": "%HPDamage% %Might:4% + %Slowed%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Pierce",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 2,
+              "Name": "Fiery Spikes",
+              "Text": "%Radius:1% %HPDamage% %Agility:3%",
+              "Type": "Ranged"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Heal",
+                "Text": "%HPHeal% 5"
+              },
+              "Movement": 1,
+              "Name": "Breath Fire",
+              "Text": "%Range:3% %HPDamage% %Willpower:4%",
+              "Type": "Magic"
+            }
+          ],
+          "Drops": "%Nothing%",
+          "HPBase": 10,
+          "HPMultiplier": 5,
+          "Name": "Ustrig",
+          "RetaliateAmount": 2,
+          "RetaliateRange": 1,
+          "SnakeModifier": {
+            "Name": "Shriek",
+            "Text": "%Radius:2% %WillpowerCheck:4% Fail >> %Stunned%",
+            "Type": "None"
+          },
+          "Tags": ["Beast", "Large", "Elite"]
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 6,
+      "Enemies": [
+        {
+          "ActionColor": "Blue",
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Teleport",
+                "Text": "%SnakeModifier%"
+              },
+              "Movement": 2,
+              "Name": "Death Aura",
+              "Text": "%Radius:1% %HPDamage% %Agility:4%",
+              "Type": "Magic"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Pierce",
+                "Text": "+ %Bleeding%"
+              },
+              "Movement": 3,
+              "Name": "Necrotic Blades",
+              "Text": "%HPDamage% %Might:4%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Weak",
+                "Text": "+ %Weakened%"
+              },
+              "Movement": 2,
+              "Name": "Torment",
+              "Text": "%Range:3% %StaminaDamage% %Willpower:5%",
+              "Type": "Magic"
+            }
+          ],
+          "Drops": "Special ability: Revenge",
+          "HPBase": 15,
+          "HPMultiplier": 0,
+          "Name": "Revenant",
+          "RetaliateAmount": 2,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Teleport",
+            "Text": "Teleport into an area adjacent to the area containing the Hero with the fewest unspent stamina.",
+            "Type": "None"
+          },
+          "Tags": ["Aox"]
+        }
+      ]
+    },
+    {
+      "ScenarioNumber": 7,
+      "Enemies": [
+        {
+          "ActionColor": "Blue",
+          "Armor": 1,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Venom",
+                "Text": "+ %Weakened%"
+              },
+              "Movement": 1,
+              "Name": "Bite",
+              "Text": "%HPDamage% %Might:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Leg stab",
+              "Text": "%HPDamage% %Agility:3%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+2 %Movement%"
+              },
+              "Movement": 2,
+              "Name": "Pinch",
+              "Text": "1 %HPDamage% + %Slowed%",
+              "Type": "Melee"
+            }
+          ],
+          "Drops": "%Nothing%",
+          "HPBase": 3,
+          "HPMultiplier": 2,
+          "Name": "Skitterer",
+          "RetaliateAmount": 1,
+          "RetaliateRange": 0,
+          "SnakeModifier": {
+            "Name": "Regenerate",
+            "Text": "%HPHeal% 3"
+          },
+          "Tags": ["Beast"]
+        },
+        {
+          "ActionColor": "Green",
+          "Armor": 1,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Birth",
+                "Text": "%SnakeModifier%"
+              },
+              "Movement": 2,
+              "Name": "Web",
+              "Text": "%Range:2% %Radius:0% %Held%",
+              "Type": "Magic"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Charge",
+                "Text": "+1 %Movement%"
+              },
+              "Movement": 3,
+              "Name": "Stomp",
+              "Text": "%HPDamage% %Agility:4%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Spike",
+                "Text": "+ %Weakened%"
+              },
+              "Movement": 2,
+              "Name": "Spike",
+              "Text": "%Range:1% %HPDamage% %Might:4%",
+              "Type": "Melee"
+            }
+          ],
+          "Drops": "Agura Crystal token",
+          "HPBase": 10,
+          "HPMultiplier": 5,
+          "Name": "Hive Mother",
+          "RetaliateAmount": 2,
+          "RetaliateRange": 1,
+          "SnakeModifier": {
+            "Name": "Birth",
+            "Text": "%Range:0% Spawn 1 skitterer"
+          },
+          "Tags": ["Beast", "Large", "Elite"]
+        },
+        {
+          "ActionColor": "Blue",
+          "Armor": 0,
+          "Attacks": [
+            {
+              "AttackSymbol": "FullyOpen",
+              "HornModifier": {
+                "Name": "Grab",
+                "Text": "+ %Held%"
+              },
+              "Movement": 2,
+              "Name": "Crush",
+              "Text": "%HPDamage% %Agility:5%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "HalfOpen",
+              "HornModifier": {
+                "Name": "Rush",
+                "Text": "+1 %Movement"
+              },
+              "Movement": 2,
+              "Name": "Thrust",
+              "Text": "%HPDamage% %Might:5%",
+              "Type": "Melee"
+            },
+            {
+              "AttackSymbol": "Squint",
+              "HornModifier": {
+                "Name": "Dizzy",
+                "Text": "+ %Stunned%"
+              },
+              "Movement": 1,
+              "Name": "Enfeeble",
+              "Text": "%Range:2% %StaminaDamage% %Willpower:5%",
+              "Type": "Magic"
+            }
+          ]
         }
       ]
     }
