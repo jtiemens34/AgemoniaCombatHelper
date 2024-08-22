@@ -1,53 +1,54 @@
 @if (Entity is not null)
 {
-    <img class="@displayClass" src="@ImageUrl" @onclick:stopPropagation="true" @onclick="SelectColor" />
+    <div>
+        <img class="@DisplayClass" src="@ImageUrl" @onclick:stopPropagation="true" @onclick="TogglePopover" />
+        @if (!IsEnemy)
+        {
+            <div style="@PopOverDisplay">
+                <img src="images/red_hero.png" @onclick:stopPropagation="true" @onclick="() => SelectColor(ActionColor.Red)" />
+                <img src="images/blue_hero.png" @onclick:stopPropagation="true" @onclick="() => SelectColor(ActionColor.Blue)" />
+                <img src="images/green_hero.png" @onclick:stopPropagation="true" @onclick="() => SelectColor(ActionColor.Green)" />
+            </div>
+        }
+    </div>
 }
 
 @code 
 {
     [Inject]
     public CombatController? controller { get; set; }
-    [Parameter]
-    public bool IsEnemy { get; set; }
-    [Parameter]
+    [CascadingParameter]
     public Entity? Entity { get; set; }
 
-    private string displayClass = "";
-    private string? ImageUrl;
+    private string DisplayClass = "";
+    private string ImageUrl = "";
+    private string PopOverDisplay = "display:none;";
+
+    private bool IsEnemy;
 
     protected override void OnParametersSet()
     {
+        IsEnemy = Entity is Enemy;
         SetImageUrl();
-        displayClass = IsEnemy ? "enemy-color-display" : "hero-color-display";
+        DisplayClass = IsEnemy ? "enemy-color-display" : "hero-color-display";
         base.OnParametersSet();
     }
-    private void SelectColor()
+    private void TogglePopover()
     {
         if (IsEnemy) return;
-        if (Entity is null || controller is null) return;
-        Entity.ActionColor = ActionColor.Red;
-        controller.ArrangeEntities();
-        controller.RefreshDisplay();
+        PopOverDisplay = PopOverDisplay == "display:none;" ? "display:block;" : "display:none;";
+    }
+    private void SelectColor(ActionColor colorToChangeTo)
+    {
+        Entity!.ActionColor = colorToChangeTo;
+        controller?.ArrangeEntities();
+        controller?.RefreshDisplay();
         SetImageUrl();
+        TogglePopover();
     }
     private void SetImageUrl()
     {
-        if (Entity is null) return;
-        switch (Entity.ActionColor)
-        {
-            case ActionColor.Red:
-                if (IsEnemy) ImageUrl = "images/red_enemy.png";
-                else ImageUrl = "images/red_hero.png";
-                break;
-            case ActionColor.Blue:
-                if (IsEnemy) ImageUrl = "images/blue_enemy.png";
-                else ImageUrl = "images/blue_hero.png";
-                break;
-            case ActionColor.Green:
-                if (IsEnemy) ImageUrl = "images/green_enemy.png";
-                else ImageUrl = "images/green_hero.png";
-                break;
-        }
-        
+        string entityType = IsEnemy ? "enemy" : "hero";
+        ImageUrl = $"images/{Entity?.ActionColor.ToString()}_{entityType}.png";
     }
 }

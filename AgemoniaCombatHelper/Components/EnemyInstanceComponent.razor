@@ -1,0 +1,13 @@
+﻿@if (Instance is not null)
+{
+    <div>
+        Health: @Instance.Health
+    </div>
+}
+@code {
+    [Parameter]
+    public EnemyInstance? Instance { get; set; }
+    // TODO: Build out mini display for each standee
+    // TODO: Include debuff display
+    // TODO: Include a modal for manipulating each enemy instance, including health values and debuff application
+}

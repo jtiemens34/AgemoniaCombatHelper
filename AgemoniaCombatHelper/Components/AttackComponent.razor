@@ -1,0 +1,144 @@
+@if (Attack is not null) {
+    <div>
+        <div>
+            <img src="@AttackSymbolIconUrl" />
+        </div>
+        @if (DisplaySnake)
+        {
+            <div>
+                @SnakeModifier?.Name: @SnakeModifier?.Text
+            </div>
+        }
+        <div>
+            <img src="@AttackTypeIconUrl" />
+            @Attack.Name
+        </div>
+        <div>@Attack.Movement</div>
+        <div>
+            @if (Icons is not null) {
+                @foreach (var Icon in Icons)
+                {
+                    <AttackIconComponent IconUrl="@Icon.Key" Value="@Icon.Value"/>
+                }
+            }
+        </div>
+        @if (DisplayHorns)
+        {
+            <div>
+                @Attack.HornModifier?.Name: @Attack.HornModifier?.Text
+            </div>
+        }
+    </div>
+}
+@code{
+    [CascadingParameter]
+    public Enemy? Enemy { get; set; }
+
+    private Modifier? SelectedModifier;
+    private SnakeModifier? SnakeModifier;
+    private Attack? Attack;
+    private Dictionary<string, int>? Icons;
+
+    private string AttackSymbolIconUrl = "";
+    private string AttackTypeIconUrl = "";
+
+    private bool DisplaySnake = false;
+    private bool DisplayHorns = false;
+
+    protected override void OnParametersSet()
+    {
+        Attack = Enemy!.Attacks?.First(a => a.AttackSymbol == Enemy.SelectedAttackSymbol);
+        SelectedModifier = Enemy.Modifier;
+        SnakeModifier = Enemy.SnakeModifier;
+        switch (Attack?.AttackSymbol)
+        {
+            case AttackSymbol.FullyOpen:
+                AttackSymbolIconUrl = "images/fully-open.png";
+                break;
+            case AttackSymbol.HalfOpen:
+                AttackSymbolIconUrl = "images/half-open.png";
+                break;
+            case AttackSymbol.Squint:
+                AttackSymbolIconUrl = "images/squint.png";
+                break;
+        }
+        switch (Attack?.AttackType)
+        {
+            case AttackType.Magic:
+                AttackTypeIconUrl = "images/magic.png";
+                break;
+            case AttackType.Ranged:
+                AttackTypeIconUrl = "images/ranged.png";
+                break;
+            case AttackType.Melee:
+                AttackTypeIconUrl = "images/melee.png";
+                break;
+        }
+
+        switch (SelectedModifier)
+        {
+            case Models.Initiative.Modifier.Snake:
+                DisplaySnake = true;
+                break;
+            case Models.Initiative.Modifier.Horns:
+                DisplayHorns = true;
+                if (Attack!.HornModifier!.Text!.Contains("%SnakeModifier%")) DisplaySnake = true;
+                break;
+            case Models.Initiative.Modifier.SnakeAndHorns:
+                DisplayHorns = true;
+                DisplaySnake = true;
+                break;
+        }
+        Icons = BuildAttackText(Attack!.Text!);
+        base.OnParametersSet();
+    }
+    private Dictionary<string, int> BuildAttackText(string attackText) 
+    {
+        int partStartIndex = 0;
+        bool isIconPart = false;
+        Dictionary<string, int> attackIcons = new();
+        // Loop the attack text
+        for (int i = 0; i < attackText.Length; i++)
+        {
+            // When you encounter a %...
+            if (attackText[i] == '%')
+            {
+                // If this is the first time encountering a %, start a tag
+                if (!isIconPart)
+                {
+                    if (i > 0 && partStartIndex < i)
+                    {
+                        // string textPart = attackText.Substring(partStartIndex, i);
+                    }
+                    isIconPart = true;
+                    // Increment partStartIndex
+                    partStartIndex = i + 1;
+                }
+                // If you have seen one before, this is the ending tag
+                else
+                {
+                    string iconToken = attackText.Substring(partStartIndex, i - partStartIndex);
+                    if (iconToken.Contains(':'))
+                    {
+                        // Render with value on top of image
+                        // Find index of ':' to split based on icon token and value
+                        int colonIndex = iconToken.IndexOf(':');
+                        // Icon token will be text up to the :
+                        string iconUrl = iconToken.Substring(0, colonIndex);
+                        // The value will be parsed after the :
+                        int value = int.Parse(iconToken.Substring(colonIndex + 1));
+                        attackIcons.Add(iconUrl, value);
+                    }
+                    else
+                    {
+                        // Simply render image
+                        attackIcons.Add(iconToken, 0);
+                    }
+                    // Reset isIconPart flag so you can detect more within the same string
+                    isIconPart = false;
+                }
+            }
+        }
+        return attackIcons;
+    }
+}

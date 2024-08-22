@@ -1,0 +1,15 @@
+﻿@if(IconUrl != "")
+{
+    <img src="@IconUrl" />
+}
+@if(Value != 0)
+{
+    <p>@Value</p>
+}
+
+@code {
+    [Parameter]
+    public string? IconUrl { get; set; }
+    [Parameter]
+    public int Value { get; set; }
+}

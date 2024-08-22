@@ -14,5 +14,6 @@ public class Enemy : Entity
     public int RetaliateRange { get; set; }
     public List<string>? Tags { get; set; }
     public Modifier Modifier { get; set; } = Modifier.None;
+    public SnakeModifier? SnakeModifier { get; set; }
     public AttackSymbol SelectedAttackSymbol { get; set; } = AttackSymbol.None;
 }

@@ -1,7 +1,7 @@
 ﻿@if (Hero is not null) {
     <div class="hero" @onclick="() => heroModal?.Open()">
         <div class="banner">
-            <ActionColorDisplay IsEnemy="false" Entity="@Hero" />
+            <ActionColorDisplay />
             @Hero.HeroClass.ToString()
         </div>
         @if (HasExtraManeuver)
@@ -23,30 +23,35 @@
             <span>@Hero.Damage</span>
         </div>
     </div>
-    <Modal @ref="@heroModal">
-        <Title>Editing @Hero.HeroClass.ToString()</Title>
-        <Body>
-            <div>
-                <button class="btn btn-secondary" @onclick="() => Hero.SpendStamina(1)">-1</button>
-                Stamina: @Hero.Stamina
-                <button class="btn btn-secondary" @onclick="() => Hero.RecoverStamina(1)">+1</button>
-            </div>
-            <div>
-                Spent Stamina: @Hero.SpentStamina
-            </div>
-            <div>
-                <button class="btn btn-secondary" @onclick="() => Hero.TakeDamage(1)">-1</button>
-                Damage: @Hero.Damage
-                <button class="btn btn-secondary" @onclick="() => Hero.HealDamage(1)">+1</button>
-            </div>
-        </Body>
+    <Modal @ref="@heroModal" Title="@modalTitle">
+        <div>
+            <button class="btn btn-secondary" @onclick="() => Hero.SpendStamina(1)">-1</button>
+            Stamina: @Hero.Stamina
+            <button class="btn btn-secondary" @onclick="() => Hero.RecoverStamina(1)">+1</button>
+        </div>
+        <div>
+            Spent Stamina: @Hero.SpentStamina
+        </div>
+        <div>
+            <button class="btn btn-secondary" @onclick="() => Hero.TakeDamage(1)">-1</button>
+            Damage: @Hero.Damage
+            <button class="btn btn-secondary" @onclick="() => Hero.HealDamage(1)">+1</button>
+        </div>
     </Modal>
 }
 @code {
-    [Parameter]
+    [CascadingParameter]
     public Hero? Hero { get; set; }
     [Parameter]
     public bool HasExtraManeuver { get; set; }
+
+    private string modalTitle = "";
+
+    protected override void OnParametersSet()
+    {
+        modalTitle = $"Editing {Hero?.HeroClass.ToString()}";
+        base.OnParametersSet();
+    }
 
     private Modal? heroModal;
 }

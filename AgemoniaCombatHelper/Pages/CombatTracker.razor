@@ -5,28 +5,26 @@
 {
     if (entity is Hero)
     {
-        <HeroComponent @key="entity" Hero="(Hero)entity" />
+        <CascadingValue Value="(Hero)entity">
+            <HeroComponent @key="entity" />
+        </CascadingValue>
     }
     else
     {
-        <EnemyComponent @key="entity" Enemy="(Enemy)entity" />
+        <CascadingValue Value="(Enemy)entity">
+            <EnemyComponent @key="entity" />
+        </CascadingValue>
     }
 }
 
 <button class="btn btn-primary" @onclick="() => addHeroModal?.Open()">Add Hero</button>
 <button class="btn btn-primary" @onclick="() => selectScenarioModal?.Open()">Select Scenario</button>
 <button class="btn btn-primary" @onclick="() => controller.DrawNewCard()">Draw Initiative Card</button>
-<Modal @ref="addHeroModal">
-    <Title>Add Hero</Title>
-    <Body>
-        <AddHero ParentModal="@addHeroModal" />
-    </Body>
+<Modal @ref="addHeroModal" Title="Add Hero">
+    <AddHero />
 </Modal>
-<Modal @ref="@selectScenarioModal">
-    <Title>Select Scenario</Title>
-    <Body>
-        <SelectScenario ParentModal="@selectScenarioModal" />
-    </Body>
+<Modal @ref="selectScenarioModal" Title="Select Scenario">
+    <SelectScenario />
 </Modal>
 
 

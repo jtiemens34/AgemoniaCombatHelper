@@ -1,13 +1,13 @@
 ﻿@if (Enemy is not null) {
     <div class="enemy">
         <div class="wrapper">
-            <ActionColorDisplay IsEnemy="true" Entity="@Enemy" />
+            <ActionColorDisplay />
             <div class="enemy-name">@Enemy.Name</div>
-            <!-- Icon -->
+            <img src="@iconUrl" />
         </div>
         @if (Enemy.SelectedAttackSymbol != AttackSymbol.None)
         {
-            <!-- Attack Display -->
+            <AttackComponent />
         }
         <button class="btn btn-primary" @onclick="AddEnemy">+</button>
         @foreach (var enemyInstance in enemyInstances)
@@ -17,13 +17,19 @@
     </div>
 }
 @code {
-    // TODO: Refactor to remove SetAttack and Icon Position methods
-    // TODO: Add raw text display for enemy instructions
     // TODO: Figure out how to parse the % icons within the Text property
     [Inject]
     public CombatController? controller { get; set; }
-    [Parameter]
+    [CascadingParameter]
     public Enemy? Enemy { get; set; }
+
+    private string iconUrl = "";
+
+    protected override void OnParametersSet()
+    {
+        iconUrl = "images/s" + controller?.ScenarioNumber + "_" + Enemy?.Name?.Replace("%20", "_") + ".png";
+        base.OnParametersSet();
+    }
 
     private List<EnemyInstance> enemyInstances = new();
 

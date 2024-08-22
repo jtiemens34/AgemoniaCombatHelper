@@ -14,9 +14,9 @@ public class CombatController
     private Scenarios? Scenarios;
     public List<Entity> TurnOrder;
 
-    private CombatTracker? CombatTracker;
+    public int ScenarioNumber;
 
-    public delegate void TurnOrderUpdated();
+    private CombatTracker? CombatTracker;
 
     public InitiativeCard? ActiveCard { get; private set; }
     private InitiativeDeck? InitiativeCards;
@@ -136,6 +136,7 @@ public class CombatController
         if (Scenarios is null) return;
         if (Scenarios.Data is null) return;
         Enemies.Clear();
+        ScenarioNumber = scenarioNumber;
         if (scenarioNumber == 1) return;
         List<Enemy> enemiesToLoad = Scenarios.Data.Where(s => s.ScenarioNumber == scenarioNumber).First().Enemies!;
         foreach (var enemy in enemiesToLoad) AddEnemy(enemy);

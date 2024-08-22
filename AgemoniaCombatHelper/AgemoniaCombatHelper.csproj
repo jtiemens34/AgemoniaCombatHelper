@@ -20,4 +20,6 @@
     </Content>
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties wwwroot_4scenarios_1json__JsonSchema="..\scenarioschema.json" /></VisualStudio></ProjectExtensions>
+
 </Project>
