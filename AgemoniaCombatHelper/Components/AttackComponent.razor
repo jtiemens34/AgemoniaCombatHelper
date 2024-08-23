@@ -10,7 +10,10 @@
             </div>
         }
         <div>
-            <img src="@AttackTypeIconUrl" />
+            @if (AttackTypeIconUrl != "")
+            {
+                <img src="@AttackTypeIconUrl" />
+            }
             @Attack.Name
         </div>
         <div>@Attack.Movement</div>
@@ -50,44 +53,55 @@
         Attack = Enemy!.Attacks?.First(a => a.AttackSymbol == Enemy.SelectedAttackSymbol);
         SelectedModifier = Enemy.Modifier;
         SnakeModifier = Enemy.SnakeModifier;
+
+        DisplayHorns = false;
+        DisplaySnake = false;
+        AttackTypeIconUrl = "";
+
         switch (Attack?.AttackSymbol)
         {
             case AttackSymbol.FullyOpen:
-                AttackSymbolIconUrl = "images/fully-open.png";
+                AttackSymbolIconUrl = "images/icons/FullyOpen.png";
                 break;
             case AttackSymbol.HalfOpen:
-                AttackSymbolIconUrl = "images/half-open.png";
+                AttackSymbolIconUrl = "images/icons/HalfOpen.png";
                 break;
             case AttackSymbol.Squint:
-                AttackSymbolIconUrl = "images/squint.png";
+                AttackSymbolIconUrl = "images/icons/Squint.png";
                 break;
         }
-        switch (Attack?.AttackType)
+        switch (Attack?.Type)
         {
             case AttackType.Magic:
-                AttackTypeIconUrl = "images/magic.png";
+                AttackTypeIconUrl = "images/icons/Magic.png";
                 break;
             case AttackType.Ranged:
-                AttackTypeIconUrl = "images/ranged.png";
+                AttackTypeIconUrl = "images/icons/Ranged.png";
                 break;
             case AttackType.Melee:
-                AttackTypeIconUrl = "images/melee.png";
+                AttackTypeIconUrl = "images/icons/Melee.png";
+                break;
+            case AttackType.None:
+                AttackTypeIconUrl = "";
                 break;
         }
-
-        switch (SelectedModifier)
+        if (Enemy.SnakeModifier!.Text is not null)
         {
-            case Models.Initiative.Modifier.Snake:
-                DisplaySnake = true;
-                break;
-            case Models.Initiative.Modifier.Horns:
-                DisplayHorns = true;
-                if (Attack!.HornModifier!.Text!.Contains("%SnakeModifier%")) DisplaySnake = true;
-                break;
-            case Models.Initiative.Modifier.SnakeAndHorns:
-                DisplayHorns = true;
-                DisplaySnake = true;
-                break;
+            switch (SelectedModifier)
+            {
+                case Models.Initiative.Modifier.Snake:
+                    DisplaySnake = true;
+                    break;
+                case Models.Initiative.Modifier.Horns:
+                    DisplayHorns = true;
+                    if (Attack!.HornModifier!.Text is null) break;
+                    if (Attack!.HornModifier!.Text!.Contains("%SnakeModifier%")) DisplaySnake = true;
+                    break;
+                case Models.Initiative.Modifier.SnakeAndHorns:
+                    DisplayHorns = true;
+                    DisplaySnake = true;
+                    break;
+            }
         }
         Icons = BuildAttackText(Attack!.Text!);
         base.OnParametersSet();
@@ -127,12 +141,12 @@
                         string iconUrl = iconToken.Substring(0, colonIndex);
                         // The value will be parsed after the :
                         int value = int.Parse(iconToken.Substring(colonIndex + 1));
-                        attackIcons.Add(iconUrl, value);
+                        attackIcons.Add("images/icons/" + iconUrl, value);
                     }
                     else
                     {
                         // Simply render image
-                        attackIcons.Add(iconToken, 0);
+                        attackIcons.Add("images/icons/" + iconToken, 0);
                     }
                     // Reset isIconPart flag so you can detect more within the same string
                     isIconPart = false;

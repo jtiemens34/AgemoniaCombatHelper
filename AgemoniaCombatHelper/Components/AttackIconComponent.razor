@@ -1,10 +1,13 @@
-﻿@if(IconUrl != "")
+﻿@if (Value != 0)
+{
+    <div class="icon-container">
+        <img src="@IconUrl" />
+        <p>@Value</p>
+    </div>
+}
+else
 {
     <img src="@IconUrl" />
-}
-@if(Value != 0)
-{
-    <p>@Value</p>
 }
 
 @code {
@@ -12,4 +15,9 @@
     public string? IconUrl { get; set; }
     [Parameter]
     public int Value { get; set; }
+    protected override void OnParametersSet()
+    {
+        IconUrl += ".png";
+        base.OnParametersSet();
+    }
 }

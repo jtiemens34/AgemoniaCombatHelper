@@ -9,5 +9,5 @@ public class Attack
     public int Movement { get; set; }
     public string? Name { get; set; }
     public string? Text { get; set; }
-    public AttackType AttackType { get; set; }
+    public AttackType Type { get; set; }
 }

@@ -1,0 +1,10 @@
+﻿.icon-container {
+    position: relative;
+}
+.icon-container p {
+    color: white;
+    position: absolute;
+    top: 0px;
+    left: 21px;
+    font-size: 3rem;
+}
