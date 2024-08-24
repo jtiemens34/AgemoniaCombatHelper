@@ -1,0 +1,58 @@
+﻿.attack {
+    padding: 10px 0 10px;
+    color: white;
+    width: 100%;
+}
+.attack div {
+    display: inline-block;
+}
+.small-icon {
+    width: 25px;
+    height: 25px;
+}
+.attack-type img {
+    margin-right: 5px;
+}
+.stack div {
+    display: block;
+}
+.stack {
+    vertical-align: top;
+    height: 100%;
+}
+.top {
+    background-color: #126192;
+    border: 2px solid #b3ac5e;
+    padding: 5px 0 5px;
+}
+.movement div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.movement .top {
+    border-top-left-radius: 10px;
+}
+.movement .bottom {
+    min-height: 96px;
+    padding-top: 20px;
+    font-size: 2rem;
+    border-bottom-left-radius: 10px;
+}
+.bottom {
+    color: black;
+    background-color: #dad4b4;
+    text-align: center;
+    padding: 10px;
+}
+.icon div {
+    min-width: 500px;
+}
+.icon .top {
+    border-top-right-radius: 10px;
+    min-height: 40.5px;
+}
+.icon .bottom {
+    text-align: left;
+    min-height: 96px;
+    border-bottom-right-radius: 10px;
+}

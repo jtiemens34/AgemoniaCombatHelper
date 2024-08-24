@@ -1,33 +1,42 @@
 @if (Attack is not null) {
-    <div>
-        <div>
-            <img src="@AttackSymbolIconUrl" />
-        </div>
+    <div class="attack">
         @if (DisplaySnake)
         {
-            <div>
+            <div class="snake">
                 @SnakeModifier?.Name: @SnakeModifier?.Text
             </div>
         }
-        <div>
-            @if (AttackTypeIconUrl != "")
-            {
-                <img src="@AttackTypeIconUrl" />
-            }
-            @Attack.Name
+        <div class="attack-symbol">
+            <img src="@AttackSymbolIconUrl" />
         </div>
-        <div>@Attack.Movement</div>
-        <div>
-            @if (Icons is not null) {
-                @foreach (var Icon in Icons)
+        <div class="movement stack">
+            <div class="top">
+                <img class="small-icon" src="images/icons/Movement.png" />
+            </div>
+            <div class="bottom">
+                @Attack.Movement
+            </div>
+        </div>
+        <div class="icon stack">
+            <div class="attack-type top">
+                @if (AttackTypeIconUrl != "")
                 {
-                    <AttackIconComponent IconUrl="@Icon.Key" Value="@Icon.Value"/>
+                    <img class="small-icon" src="@AttackTypeIconUrl" />
                 }
-            }
+                @Attack.Name
+            </div>
+            <div class="bottom">
+                @if (Icons is not null) {
+                    @foreach (var Icon in Icons)
+                    {
+                        <AttackIconComponent IconUrl="@Icon.Key" Value="@Icon.Value"/>
+                    }
+                }
+            </div>
         </div>
         @if (DisplayHorns)
         {
-            <div>
+            <div class="horns">
                 @Attack.HornModifier?.Name: @Attack.HornModifier?.Text
             </div>
         }
