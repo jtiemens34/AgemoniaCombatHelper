@@ -1,9 +1,27 @@
 ﻿@if (Enemy is not null) {
     <div class="enemy">
-        <div class="wrapper">
-            <ActionColorDisplay />
-            <div class="enemy-name">@Enemy.Name</div>
-            <img src="@iconUrl" />
+        <div class="enemy-info">
+            <div class="header">
+                <div>
+                    <ActionColorDisplay />
+                </div>
+                <div class="stack">
+                    <div class="enemy-name">@Enemy.Name</div>
+                    @if (Enemy.Tags is not null)
+                    {
+                        <hr />
+                        <div class="tags">
+                            @foreach (string Tag in Enemy.Tags)
+                            {
+                                @Tag
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+            <div>
+                <img src="@iconUrl" />
+            </div>
         </div>
         @if (Enemy.SelectedAttackSymbol != AttackSymbol.None)
         {
@@ -17,6 +35,9 @@
     </div>
 }
 @code {
+    // TODO: Add drops on bottom of enemy-info
+    // TODO: Add armor/retaliation under nameplate
+    // TODO: Fix enemy instance component layout, should be below attacks
     [Inject]
     public CombatController? controller { get; set; }
     [CascadingParameter]
@@ -26,7 +47,7 @@
 
     protected override void OnParametersSet()
     {
-        iconUrl = "images/s" + controller?.ScenarioNumber + "_" + Enemy?.Name?.Replace("%20", "_") + ".png";
+        iconUrl = "images/monsters/s" + controller?.ScenarioNumber + "_" + Enemy?.Name?.Replace("%20", "_") + ".png";
         base.OnParametersSet();
     }
 

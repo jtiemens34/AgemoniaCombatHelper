@@ -1,13 +1,13 @@
 ﻿@if (Value != 0)
 {
-    <div class="icon-container" style="display: inline-block;">
+    <div class="icon-container" style="display: inline-block;margin-right: 5px;">
         <img src="@IconUrl" />
         <p>@Value</p>
     </div>
 }
 else
 {
-    <img src="@IconUrl" />
+    <img style="margin-right: 5px;" src="@IconUrl" />
 }
 
 @code {

@@ -4,10 +4,8 @@
     height: 50px;
 }
 .enemy-color-display {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    z-index: 1;
+    height: 50px;
+    width: 50px;
 }
 .hero-color-display {
     cursor: pointer;
